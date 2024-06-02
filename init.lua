@@ -50,6 +50,7 @@ vim.keymap.set("x", "<leader>p", '"_dP')
 -- Tmux
 -- vim.keymap.set("n","<C-f>","<cmd>silent !tmux neww tmux-sessionizer<CR>")
 -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
+
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
@@ -66,6 +67,9 @@ vim.opt.timeoutlen = 300
 -- Configure how new splits should be opened
 vim.opt.splitright = true
 vim.opt.splitbelow = true
+
+-- Undotree hotkey
+vim.keymap.set("n", "<leader><F5>", vim.cmd.UndotreeToggle)
 
 -- Sets how neovim will display certain whitespace characters in the editor.
 --  See `:help 'list'`
@@ -735,6 +739,14 @@ require("lazy").setup({
 		end,
 	},
 	{
+		"tpope/vim-fugitive",
+		config = function() end,
+	},
+	{
+		"mbbill/undotree",
+		config = function() end,
+	},
+	{
 		"nvim-treesitter/nvim-treesitter-context",
 		config = function()
 			require("treesitter-context").setup({
@@ -770,7 +782,6 @@ require("lazy").setup({
 			-- - sd'   - [S]urround [D]elete [']quotes
 			-- - sr)'  - [S]urround [R]eplace [)] [']
 			require("mini.surround").setup()
-
 			-- Simple and easy statusline.
 			--  You could remove this setup call if you don't like it,
 			--  and try some other statusline plugin
