@@ -10,8 +10,8 @@ vim.g.maplocalleader = " "
 vim.opt.guicursor = ""
 vim.opt.termguicolors = true
 -- Set to true if you have a Nerd Font installed and selected in the terminal
-vim.g.have_nerd_font = false
-
+vim.g.have_nerd_font = true
+vim.o.guifont = "DroidSansMono Nerd Font:h12"
 -- [[ Setting options ]]
 -- See `:help vim.opt`
 -- NOTE: You can change these options as you wish!
@@ -747,6 +747,12 @@ require("lazy").setup({
 		config = function() end,
 	},
 	{
+		"ryanoasis/vim-devicons",
+		config = function()
+			require("nvim-web-devicons").setup({ default = true })
+		end,
+	},
+	{
 		"nvim-treesitter/nvim-treesitter-context",
 		config = function()
 			require("treesitter-context").setup({
@@ -765,7 +771,8 @@ require("lazy").setup({
 	},
 	{ -- Collection of various small independent plugins/modules
 		"echasnovski/mini.nvim",
-		"xiyaowong/transparent.nvim",
+		-- Disabled: Breaks mini
+		-- "xiyaowong/transparent.nvim",
 		config = function()
 			-- Better Around/Inside textobjects
 			--
@@ -775,7 +782,6 @@ require("lazy").setup({
 			--  - ci'  - [C]hange [I]nside [']quote
 			require("mini.ai").setup({ n_lines = 500 })
 			require("kanagawa").setup({ compile = true })
-			require("transparent").setup()
 			-- Add/delete/replace surroundings (brackets, quotes, etc.)
 			--
 			-- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
@@ -788,7 +794,7 @@ require("lazy").setup({
 			local statusline = require("mini.statusline")
 			-- set use_icons to true if you have a Nerd Font
 			statusline.setup({ use_icons = vim.g.have_nerd_font })
-
+			-- require("transparent").setup()
 			-- You can configure sections in the statusline by overriding their
 			-- default behavior. For example, here we set the section for
 			-- cursor location to LINE:COLUMN
