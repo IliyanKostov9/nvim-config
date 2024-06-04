@@ -1,5 +1,4 @@
 return {
-	require("core.plugins.gitsigns"),
 	require("core.plugins.telescope"),
 	require("core.plugins.lspconfig"),
 	require("core.plugins.conform"),
