@@ -4,4 +4,6 @@ return {
 	require("helpers.plugins.better-escape"),
 	require("helpers.plugins.undotree"),
 	require("helpers.plugins.Comment"),
+	require("helpers.plugins.headiines"),
+	require("helpers.plugins.markdown-preview"),
 }

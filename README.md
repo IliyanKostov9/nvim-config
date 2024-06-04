@@ -1,6 +1,6 @@
 # Introduction
 
-This project consists of my favorite plugins, that are either included from kickstart.nvim or me manually adding them.
+This project consists of my favorite plugins, that are either included from kickstart.nvim or me manually adding them. 
 
 ## Structure
 
@@ -12,7 +12,6 @@ I have ordered the plugin directory structure into different categories:
 - kickstart: plugins, provided by [kickstart](https://github.com/nvim-lua/kickstart.nvim)
 - themes: UI related plugins
 - tracking: plugins related to development progression (honestly I didn't think of a better name)
-
 
 ## Plugin list
 
