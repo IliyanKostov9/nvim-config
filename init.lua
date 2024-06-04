@@ -3,9 +3,7 @@
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
--- Transparency
--- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
--- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+
 -- Block cursor
 vim.opt.guicursor = ""
 vim.opt.termguicolors = true
@@ -46,6 +44,9 @@ vim.opt.colorcolumn = "80"
 -- e.g if you don't want the copy-paste to store the removed word to the registry do:
 -- yaw -> vaw -> <leader> + p
 vim.keymap.set("x", "<leader>p", '"_dP')
+-- Neoscroll
+vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Remain cursor in the middle when scrolling up" })
+vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Remain cursor in the middle when scrolling down" })
 
 -- Tmux
 -- vim.keymap.set("n","<C-f>","<cmd>silent !tmux neww tmux-sessionizer<CR>")
@@ -712,14 +713,14 @@ require("lazy").setup({
 			})
 		end,
 	},
-	{
-		"rebelot/kanagawa.nvim",
-		priority = 1000,
-		init = function()
-			vim.cmd.colorscheme("kanagawa-wave")
-			vim.cmd.hi("Comment gui=none")
-		end,
-	},
+	-- {
+	-- 	"rebelot/kanagawa.nvim",
+	-- 	priority = 1000,
+	-- 	init = function()
+	-- 		vim.cmd.colorscheme("kanagawa-wave")
+	-- 		vim.cmd.hi("Comment gui=none")
+	-- 	end,
+	-- },
 	{ "wakatime/vim-wakatime", lazy = false },
 	{
 		"folke/todo-comments.nvim",
@@ -781,7 +782,6 @@ require("lazy").setup({
 			--  - yinq - [Y]ank [I]nside [N]ext [']quote
 			--  - ci'  - [C]hange [I]nside [']quote
 			require("mini.ai").setup({ n_lines = 500 })
-			require("kanagawa").setup({ compile = true })
 			-- Add/delete/replace surroundings (brackets, quotes, etc.)
 			--
 			-- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
@@ -848,14 +848,10 @@ require("lazy").setup({
 	--
 	--  Here are some example plugins that I've included in the Kickstart repository.
 	--  Uncomment any of the lines below to enable them (you will need to restart nvim).
-	--
-	require("kickstart.plugins.debug"),
-	require("kickstart.plugins.indent_line"),
-	require("kickstart.plugins.lint"),
-	require("kickstart.plugins.autopairs"),
-	require("kickstart.plugins.neo-tree"),
-	require("kickstart.plugins.gitsigns"),
-
+	-- Kickstart plugins
+	require("kickstart.plugins.init"),
+	-- Themes
+	require("themes.plugins.init"),
 	-- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
 	--    This is the easiest way to modularize your config.
 	--
