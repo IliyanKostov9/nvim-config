@@ -64,6 +64,9 @@ vim.opt.splitbelow = true
 -- Undotree hotkey
 vim.keymap.set("n", "<leader><F5>", vim.cmd.UndotreeToggle)
 
+-- Set the path of netrw to always point to the current dir path
+vim.g.netrw_keepdir = 0
+vim.cmd("autocmd BufEnter * lcd %:p:h")
 -- Sets how neovim will display certain whitespace characters in the editor.
 --  See `:help 'list'`
 --  and `:help 'listchars'`
