@@ -40,6 +40,8 @@ vim.keymap.set("x", "<leader>p", '"_dP')
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Remain cursor in the middle when scrolling up" })
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Remain cursor in the middle when scrolling down" })
 
+-- Shortcut for Explore Ex
+vim.keymap.set("n", "<C-p>", vim.cmd.Ex, { desc = "Shortcut for :Ex" })
 -- Tmux
 -- vim.keymap.set("n","<C-f>","<cmd>silent !tmux neww tmux-sessionizer<CR>")
 -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
