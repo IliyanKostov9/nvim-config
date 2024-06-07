@@ -43,6 +43,7 @@ return {
 				kotlin = { "ktlint" },
 				terraform = { "tflint" },
 				ruby = { "standardrb" },
+				cs = { "csharpier" },
 			},
 			fallback_formatter = "prettier",
 		},
