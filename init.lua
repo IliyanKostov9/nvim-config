@@ -43,9 +43,13 @@ vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Remain cursor in the middle wh
 -- Shortcut for Explore Ex
 vim.keymap.set("n", "<C-p>", vim.cmd.Ex, { desc = "Shortcut for :Ex" })
 -- Tmux
--- vim.keymap.set("n","<C-f>","<cmd>silent !tmux neww tmux-sessionizer<CR>")
--- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
+-- Open a pane in the current path of nvim
+vim.keymap.set("n", "<leader>txp", function()
+	local current_dir = vim.fn.expand("%:p:h")
+	vim.cmd("silent !tmux split-window -v -c " .. current_dir)
+end, { noremap = true, silent = true })
 
+-- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
