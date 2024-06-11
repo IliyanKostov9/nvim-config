@@ -44,6 +44,7 @@ return {
 				terraform = { "tflint" },
 				ruby = { "standardrb" },
 				cs = { "csharpier" },
+				nix = { "nixpkgs-fmt" },
 			},
 			fallback_formatter = "prettier",
 		},
