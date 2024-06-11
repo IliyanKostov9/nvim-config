@@ -53,3 +53,40 @@ I have ordered the plugin directory structure into different categories:
 6. Tracking
 
 - [Wakatime](https://wakatime.com/neovim-plugin)
+
+
+
+
+## Mason
+
+- azure-pipelines-language-server
+- black
+- cmake-language-server
+- codespell
+- csharp-language-server
+- csharpier
+- delve
+- dockerfile-language-server
+- editorconfig-checker
+- eslint-lsp
+- google-java-format
+- gradle-language-server
+- isort
+- java-debug-adapter
+- java-test
+- jdtls
+- kotlin-debug-adapter
+- kotlin-language-server
+- ktfmt
+- lombok-nightly
+- lua-language-server
+- markdownlint
+- mypy
+- prettier
+- prettierd
+- pyflakes
+- pyright
+- python-lsp-server
+- sonarlint-language-server
+- stylua
+- xmlformatter
