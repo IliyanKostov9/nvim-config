@@ -1,3 +1,7 @@
+--  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
 -- Block cursor
 vim.opt.guicursor = ""
 vim.opt.termguicolors = true
@@ -62,3 +66,6 @@ vim.opt.undofile = true
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.opt.hlsearch = true
 vim.opt.incsearch = true
+
+
+vim.lsp.set_log_level("debug")
