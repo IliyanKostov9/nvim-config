@@ -67,5 +67,4 @@ vim.opt.undofile = true
 vim.opt.hlsearch = true
 vim.opt.incsearch = true
 
-
 vim.lsp.set_log_level("debug")

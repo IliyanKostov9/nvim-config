@@ -11,8 +11,8 @@ vim.keymap.set("n", "<C-p>", vim.cmd.Ex, { desc = "Shortcut for :Ex" })
 -- Tmux
 -- Open a pane in the current path of nvim
 vim.keymap.set("n", "<leader>`", function()
-	local current_dir = vim.fn.expand("%:p:h")
-	vim.cmd("silent !tmux split-window -v -c " .. current_dir, " -p 5")
+  local current_dir = vim.fn.expand("%:p:h")
+  vim.cmd("silent !tmux split-window -v -c " .. current_dir, " -p 5")
 end, { noremap = true, silent = true })
 
 -- Undotree hotkey
@@ -47,12 +47,23 @@ vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right win
 vim.keymap.set("n", "<C-j>", "<C---[[ w><C-j>", { desc = "Move focus to the lower window" })
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
+-- Eg, better escape vim
+function _G.custom_escape()
+  vim.api.nvim_input("<Esc>")
+  local current_line = vim.api.nvim_get_current_line()
+  if current_line:match("^%s+$") then
+    vim.api.nvim_set_current_line("")
+  end
+end
+vim.api.nvim_set_keymap("i", "jk", [[<cmd>lua _G.custom_escape()<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap("i", "jj", [[<cmd>lua _G.custom_escape()<CR>]], { noremap = true, silent = true })
+
 -- Disable LSP
 local isLspDiagnosticsVisible = true
 vim.keymap.set("n", "<leader>lx", function()
-	isLspDiagnosticsVisible = not isLspDiagnosticsVisible
-	vim.diagnostic.config({
-		virtual_text = isLspDiagnosticsVisible,
-		underline = isLspDiagnosticsVisible,
-	})
+  isLspDiagnosticsVisible = not isLspDiagnosticsVisible
+  vim.diagnostic.config {
+    virtual_text = isLspDiagnosticsVisible,
+    underline = isLspDiagnosticsVisible,
+  }
 end)
