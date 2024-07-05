@@ -1,4 +1,4 @@
 return {
-	require("git.plugins.vim-fugitive"),
-	require("git.plugins.gitsigns"),
+  require("git.plugins.vim-fugitive"),
+  require("git.plugins.gitsigns"),
 }
