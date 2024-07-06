@@ -134,6 +134,7 @@ return {
         "lua-language-server",
 
         -- Nix
+        -- Note: Requires prior to that to use `rustup default stable`
         "nixpkgs-fmt",
         "rnix-lsp",
 
