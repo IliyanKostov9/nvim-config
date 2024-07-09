@@ -4,7 +4,9 @@ return {
   require("core.plugins.nvim-java"),
   require("core.plugins.lspconfig"),
   require("core.plugins.conform"),
-  require("core.plugins.harpoon"),
+  -- Not working for global harpooned files (e.g it resets whenever I go up to a directory)
+  -- require("core.plugins.harpoon"),
+  require("core.plugins.grapple"),
   require("core.plugins.cmp"),
   require("core.plugins.mini"),
   require("core.plugins.treesitter"),

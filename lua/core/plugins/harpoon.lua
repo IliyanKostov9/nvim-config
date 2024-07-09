@@ -22,7 +22,6 @@ return {
         "<leader>l",
         function()
           local harpoon = require("harpoon")
-          -- harpoon.ui:toggle_quick_menu(harpoon:list())
           local conf = require("telescope.config").values
           local function toggle_telescope(harpoon_files)
             local file_paths = {}
@@ -46,6 +45,7 @@ return {
         end,
         desc = "Harpoon quick menu",
       },
+
       {
         "<leader>1",
         function()
@@ -81,6 +81,34 @@ return {
         end,
         desc = "Harpoon to file 5",
       },
+      {
+        "<leader>-",
+        function()
+          require("harpoon"):list():prev()
+        end,
+        desc = "Harpoon to file 5",
+      },
+      {
+        "<leader>+",
+        function()
+          require("harpoon"):list():next()
+        end,
+        desc = "Harpoon to file 5",
+      },
     },
+    config = function()
+      require("harpoon").setup {
+        global_settings = {
+          save_on_toggle = true,
+          sync_on_ui_close = true,
+          enter_on_sendcmd = false,
+          excluded_filetypes = { "harpoon" },
+          mark_branch = false,
+          key = function()
+            return vim.loop.cwd()
+          end,
+        },
+      }
+    end,
   },
 }

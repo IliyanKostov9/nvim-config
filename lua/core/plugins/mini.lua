@@ -26,13 +26,36 @@ return {
           move_with_alt = false,
         },
       }
-
-      -- Simple and easy statusline.
-      --  You could remove this setup call if you don't like it,
-      --  and try some other statusline plugin
       local statusline = require("mini.statusline")
-      -- set use_icons to true if you have a Nerd Font
-      statusline.setup { use_icons = vim.g.have_nerd_font }
+
+      statusline.setup {
+        use_icons = vim.g.have_nerd_font,
+        content = {
+          active = function()
+            local mode, mode_hl = MiniStatusline.section_mode { trunc_width = 120 }
+            local git = MiniStatusline.section_git { trunc_width = 75 }
+            local diagnostics = MiniStatusline.section_diagnostics { trunc_width = 75 }
+            local filename = MiniStatusline.section_filename { trunc_width = 75 }
+            local fileinfo = MiniStatusline.section_fileinfo { trunc_width = 120 }
+            local grapple_status = ""
+            if package.loaded["grapple"] and require("grapple").exists() then
+              grapple_status = require("grapple").statusline()
+            end
+            local location = MiniStatusline.section_location { trunc_width = 75 }
+
+            return MiniStatusline.combine_groups {
+              { hl = mode_hl, strings = { mode } },
+              { hl = "MiniStatuslineDevinfo", strings = { git, diagnostics } },
+              "%<",
+              { hl = "MiniStatuslineFilename", strings = { filename } },
+              { hl = "MiniStatuslineGrapple", strings = { grapple_status } },
+              "%=",
+              { hl = "MiniStatuslineFileinfo", strings = { fileinfo } },
+              { hl = mode_hl, strings = { location } },
+            }
+          end,
+        },
+      }
       -- require("transparent").setup()
       -- You can configure sections in the statusline by overriding their
       -- default behavior. For example, here we set the section for
