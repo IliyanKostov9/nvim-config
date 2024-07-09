@@ -80,7 +80,7 @@ return {
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
-        -- tsserver = {},
+        tsserver = {},
         lua_ls = {
           -- cmd = {...},
           -- filetypes = { ...},
@@ -116,13 +116,13 @@ return {
         "lombok-nightly",
 
         -- Kotlin
-        "kotlin-debug-adapter",
-        "kotlin-language-server",
-        "ktfmt",
+        -- "kotlin-debug-adapter",
+        -- "kotlin-language-server",
+        -- "ktfmt",
 
         -- C#
-        "csharp-language-server",
-        "csharpier",
+        -- "csharp-language-server",
+        -- "csharpier",
 
         -- Go
         "delve",
@@ -132,7 +132,7 @@ return {
         "lua-language-server",
 
         -- Nix
-        -- Note: Requires prior to that to use `rustup default stable`
+        -- Note: Requires prior to  use `rustup default stable`
         "nixpkgs-fmt",
         "rnix-lsp",
 
@@ -142,10 +142,13 @@ return {
         -- Virt
         "dockerfile-language-server",
 
-        -- Utils
-        "azure-pipelines-language-server",
-        "editorconfig-checker",
+        -- JavaScript
+        "typescript-language-server",
         "eslint-lsp",
+
+        -- Utils
+        -- "azure-pipelines-language-server",
+        "editorconfig-checker",
         "markdownlint",
         "prettier",
         "prettierd",
