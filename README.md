@@ -4,7 +4,7 @@ This project consists of my favorite plugins, that are either included from kick
 
 ## Structure
 
-I have ordered the plugin directory structure into different categories:
+ I have ordered the plugin directory structure into different categories:
 
 - core: contains the most essential *can't live without* plugins
 - git: containing some git goodies
