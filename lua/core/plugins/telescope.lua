@@ -45,9 +45,15 @@ return {
       vim.keymap.set("n", "<leader>sr", builtin.resume, { desc = "[S]earch [R]esume" })
       vim.keymap.set("n", "<leader>f.", builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
       vim.keymap.set("n", "<leader><leader>", builtin.buffers, { desc = "[ ] Find existing buffers" })
+      -- Marks
+      vim.keymap.set("n", "<leader>mm", builtin.marks, {})
+      -- Jumplist
+      vim.keymap.set("n", "<leader>jmp", builtin.jumplist, {})
 
-      -- Git file search
+      -- Git
       vim.keymap.set("n", "<leader>gg", builtin.git_files, {})
+      vim.keymap.set("n", "<leader>giff", builtin.git_status, {})
+      vim.keymap.set("n", "<leader>gbr", builtin.git_branches, {})
 
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set("n", "<leader>/", function()

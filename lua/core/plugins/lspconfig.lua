@@ -2,15 +2,13 @@ return {
   {
     "neovim/nvim-lspconfig",
     dependencies = {
-      -- Automatically install LSPs and related tools to stdpath for Neovim
       { "williamboman/mason.nvim", config = true }, -- NOTE: Must be loaded before dependants
       "williamboman/mason-lspconfig.nvim",
       "WhoIsSethDaniel/mason-tool-installer.nvim",
-
+      "mfussenegger/nvim-jdtls",
       -- Useful status updates for LSP.
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
       { "j-hui/fidget.nvim", opts = {} },
-
       -- `neodev` configures Lua LSP for your Neovim config, runtime and plugins
       -- used for completion, annotations and signatures of Neovim apis
       { "folke/neodev.nvim", opts = {} },
@@ -145,9 +143,7 @@ return {
         "dockerfile-language-server",
 
         -- Utils
-        "sonarlint-language-server",
         "azure-pipelines-language-server",
-        "codespell",
         "editorconfig-checker",
         "eslint-lsp",
         "markdownlint",
@@ -157,6 +153,7 @@ return {
       })
       require("mason-tool-installer").setup { ensure_installed = ensure_installed }
       require("mason-lspconfig").setup {
+        ensure_installed = { "ltex" },
         handlers = {
           function(server_name)
             local server = servers[server_name] or {}
