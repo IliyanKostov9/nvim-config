@@ -5,6 +5,7 @@ return {
   -- require("helpers.plugins.better-escape"),
   require("helpers.plugins.undotree"),
   require("helpers.plugins.Comment"),
-  require("helpers.plugins.headiines"),
+  -- Commented because it's kinda annoying when editing markdown
+  -- require("helpers.plugins.headiines"),
   require("helpers.plugins.markdown-preview"),
 }

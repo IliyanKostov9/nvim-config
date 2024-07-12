@@ -79,3 +79,5 @@ end)
 vim.api.nvim_set_keymap("n", "<M-z>", ":set wrap!<CR>", { noremap = true, silent = true })
 -- Go to the root of the git project
 vim.api.nvim_set_keymap("n", "<C-g>", ":lua ChangeToGitRoot()<CR>", { noremap = true, silent = true })
+-- Git commands
+vim.keymap.set("n", "<leader>gweb", "<cmd>Git browse <cr>", { desc = "Navigate to git remote via browser" })
