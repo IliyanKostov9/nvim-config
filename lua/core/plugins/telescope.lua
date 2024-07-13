@@ -62,6 +62,7 @@ return {
       vim.keymap.set("n", "<leader>gg", builtin.git_files, {})
       vim.keymap.set("n", "<leader>giff", builtin.git_status, {})
       vim.keymap.set("n", "<leader>gbr", builtin.git_branches, {})
+      vim.keymap.set("n", "<leader>gcm", builtin.git_commits, {})
 
       -- It's also possible to pass additional configuration options.
       --  See `:help telescope.builtin.live_grep()` for information about particular keys
