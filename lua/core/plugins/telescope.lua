@@ -45,7 +45,6 @@ return {
       vim.keymap.set("n", "<leader>sr", builtin.resume, { desc = "[S]earch [R]esume" })
       vim.keymap.set("n", "<leader>f.", builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
       vim.keymap.set("n", "<leader><leader>", builtin.buffers, { desc = "[ ] Find existing buffers" })
-      -- Fuzzy search
       vim.keymap.set("n", "<leader>/", function()
         -- You can pass additional configuration to Telescope to change the theme, layout, etc.
         builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown {
@@ -55,16 +54,36 @@ return {
       end, { desc = "[/] Fuzzily search in current buffer" })
 
       -- Marks
-      vim.keymap.set("n", "<leader>mm", builtin.marks, {})
+      vim.keymap.set("n", "<leader>mm", builtin.marks, { desc = "List all [M]arks for [M]om" })
       -- Jumplist
-      vim.keymap.set("n", "<leader>jmp", builtin.jumplist, {})
+      vim.keymap.set("n", "<leader>jmp", builtin.jumplist, { desc = "List all [J]u[M][P]s" })
       -- Git
-      vim.keymap.set("n", "<leader>gg", builtin.git_files, {})
-      vim.keymap.set("n", "<leader>giff", builtin.git_status, {})
-      vim.keymap.set("n", "<leader>gbr", builtin.git_branches, {})
-      vim.keymap.set("n", "<leader>gcm", builtin.git_commits, {})
+      --
+      local function check_if_user_in_git(builtin_fn)
+        local is_user_in_git_repo = pcall(function()
+          builtin_fn()
+        end)
+        if not is_user_in_git_repo then
+          print("You are not in git project!!!")
+        end
+      end
 
-      -- It's also possible to pass additional configuration options.
+      vim.keymap.set("n", "<leader>gg", function()
+        check_if_user_in_git(builtin.git_files)
+      end, { desc = "Search [G]it files for [G]ood" })
+
+      vim.keymap.set("n", "<leader>giff", function()
+        check_if_user_in_git(builtin.git_status)
+      end, { desc = "Show the [G]it d[I][F][F]erence for changed files" })
+
+      vim.keymap.set("n", "<leader>gbr", function()
+        check_if_user_in_git(builtin.git_branches)
+      end, { desc = "List all local and remote [G]it [B][R]anches" })
+
+      vim.keymap.set("n", "<leader>gcm", function()
+        check_if_user_in_git(builtin.git_commits)
+      end, { desc = "List all [G]it [C]o[M]mits" })
+
       --  See `:help telescope.builtin.live_grep()` for information about particular keys
       vim.keymap.set("n", "<leader>s/", function()
         builtin.live_grep {
