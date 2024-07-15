@@ -1,35 +1,53 @@
 return {
-	{
+  {
+    "rebelot/kanagawa.nvim",
+    priority = 1000,
+    config = function()
+      require("kanagawa").setup {
+        compile = false,
+        undercurl = true,
+        commentStyle = { italic = true },
+        functionStyle = {},
+        keywordStyle = { italic = true },
+        statementStyle = { bold = true },
+        typeStyle = {},
+        transparent = true,
+        dimInactive = false,
+        terminalColors = true,
+        colors = {
+          palette = {},
+          theme = { wave = {}, lotus = {}, dragon = {}, all = {} },
+        },
+        overrides = function(colors)
+          return {}
+        end,
+        theme = "wave",
+        background = {
+          dark = "wave",
+          light = "lotus",
+        },
+      }
+      -- vim.cmd.colorscheme("kanagawa-wave")
+      -- vim.cmd.colorscheme("zellner")
 
-		"rebelot/kanagawa.nvim",
-		priority = 1000,
-		config = function()
-			require("kanagawa").setup({
-				compile = false, -- enable compiling the colorscheme
-				undercurl = true, -- enable undercurls
-				commentStyle = { italic = true },
-				functionStyle = {},
-				keywordStyle = { italic = true },
-				statementStyle = { bold = true },
-				typeStyle = {},
-				transparent = false, -- do not set background color
-				dimInactive = false, -- dim inactive window `:h hl-NormalNC`
-				terminalColors = true, -- define vim.g.terminal_color_{0,17}
-				colors = { -- add/modify theme and palette colors
-					palette = {},
-					theme = { wave = {}, lotus = {}, dragon = {}, all = {} },
-				},
-				overrides = function(colors) -- add/modify highlights
-					return {}
-				end,
-				theme = "wave", -- Load "wave" theme when 'background' option is not set
-				background = { -- map the value of 'background' option to a theme
-					dark = "wave", -- try "dragon" !
-					light = "lotus",
-				},
-			})
-			vim.cmd.colorscheme("kanagawa-wave")
-			vim.cmd.hi("Comment gui=none")
-		end,
-	},
+      local function set_color_scheme()
+        local hour = tonumber(os.date("%H"))
+        if hour >= 7 and hour < 17 then
+          vim.cmd.colorscheme("rose-pine-dawn")
+        else
+          vim.cmd.colorscheme("kanagawa-wave")
+        end
+      end
+      set_color_scheme()
+      local timer = vim.loop.new_timer()
+      timer:start(
+        0,
+        3600000,
+        vim.schedule_wrap(function()
+          set_color_scheme()
+        end)
+      )
+      vim.cmd.hi("Comment gui=none")
+    end,
+  },
 }
