@@ -3,5 +3,5 @@ return {
   require("code.plugins.indent_line"),
   require("code.plugins.lint"),
   require("code.plugins.autopairs"),
-  require("code.plugins.jupyter"),
+  -- require("code.plugins.jupyter"),
 }
