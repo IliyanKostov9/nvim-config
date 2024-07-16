@@ -11,7 +11,7 @@ return {
         keywordStyle = { italic = true },
         statementStyle = { bold = true },
         typeStyle = {},
-        transparent = true,
+        transparent = false,
         dimInactive = false,
         terminalColors = true,
         colors = {
@@ -28,8 +28,6 @@ return {
         },
       }
       -- vim.cmd.colorscheme("kanagawa-wave")
-      -- vim.cmd.colorscheme("zellner")
-
       local function set_color_scheme()
         local hour = tonumber(os.date("%H"))
         if hour >= 7 and hour < 17 then
