@@ -16,6 +16,7 @@ jobs:
           REPO_FULL_NAME="${{ github.repository }}"
           REPO_NAME="${REPO_FULL_NAME#*/}.git"
           echo "Repo name extracted: $REPO_NAME"
+          echo "Username: ${{ secrets.GIT_USERNAME }}"
           echo "::set-output name=repo_name::$REPO_NAME"
 
       - name: Mirror to Codeberg
