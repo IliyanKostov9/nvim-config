@@ -50,6 +50,8 @@ vim.g.netrw_keepdir = 0
 
 vim.opt.list = true
 vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+-- Adjust indent tabs
+vim.o.tabstop = 2
 
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = "split"
