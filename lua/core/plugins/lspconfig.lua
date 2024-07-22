@@ -81,6 +81,7 @@ return {
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
         tsserver = {},
+        yamlls = {},
         lua_ls = {
           -- cmd = {...},
           -- filetypes = { ...},
@@ -151,16 +152,18 @@ return {
         "eslint-lsp",
 
         -- Utils
-        "azure-pipelines-language-server",
+        -- "azure-pipelines-language-server",
         "editorconfig-checker",
         "markdownlint",
         "prettier",
         "prettierd",
         "xmlformatter",
+        "yaml-language-server",
+        "yamllint",
       })
       require("mason-tool-installer").setup { ensure_installed = ensure_installed }
       require("mason-lspconfig").setup {
-        ensure_installed = { "ltex" },
+        ensure_installed = { "ltex", "yaml-language-server" },
         handlers = {
           function(server_name)
             local server = servers[server_name] or {}
@@ -172,6 +175,7 @@ return {
           end,
         },
       }
+
       vim.lsp.set_log_level("WARN")
     end,
   },
