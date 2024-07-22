@@ -101,6 +101,10 @@ return {
 
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
+        -- Ansible
+        "ansible-language-server",
+        "ansible-lint",
+
         -- Python
         "black",
         "pylint",
@@ -147,7 +151,7 @@ return {
         "eslint-lsp",
 
         -- Utils
-        -- "azure-pipelines-language-server",
+        "azure-pipelines-language-server",
         "editorconfig-checker",
         "markdownlint",
         "prettier",
