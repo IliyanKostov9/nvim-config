@@ -102,9 +102,14 @@ return {
 
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
+
         -- Ansible
         "ansible-language-server",
         "ansible-lint",
+
+        -- Terraform
+        "terraform-ls",
+        "tflint",
 
         -- Python
         "black",

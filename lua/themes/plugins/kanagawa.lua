@@ -30,7 +30,7 @@ return {
       -- vim.cmd.colorscheme("kanagawa-wave")
       local function set_color_scheme()
         local hour = tonumber(os.date("%H"))
-        if hour >= 7 and hour < 17 then
+        if hour >= 7 and hour < 20 then
           vim.cmd.colorscheme("rose-pine-dawn")
         else
           vim.cmd.colorscheme("kanagawa-wave")
