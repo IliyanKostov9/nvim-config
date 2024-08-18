@@ -39,7 +39,7 @@ return {
         json = { "prettier" },
         css = { "prettier" },
         html = { "prettier" },
-        -- kotlin = { "ktlint" },
+        kotlin = { "ktlint" },
         ruby = { "standardrb" },
         cs = { "csharpier" },
         nix = { "nixpkgs-fmt" },

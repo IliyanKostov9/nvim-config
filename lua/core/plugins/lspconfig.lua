@@ -104,8 +104,8 @@ return {
       vim.list_extend(ensure_installed, {
 
         -- Ansible
-        "ansible-language-server",
-        "ansible-lint",
+        -- "ansible-language-server",
+        -- "ansible-lint",
 
         -- Terraform
         "terraform-ls",
@@ -135,11 +135,12 @@ return {
         -- "csharpier",
 
         -- Go
-        "delve",
+        -- Commented, because for some reason it's unable to find std module
+        -- "delve",
 
         -- Lua
         "stylua",
-        "lua-language-server",
+        -- "lua-language-server",
 
         -- Nix
         -- Note: Requires prior to  use `rustup default stable`
@@ -168,7 +169,7 @@ return {
       })
       require("mason-tool-installer").setup { ensure_installed = ensure_installed }
       require("mason-lspconfig").setup {
-        ensure_installed = { "ltex", "yaml-language-server" },
+        ensure_installed = { "ltex" },
         handlers = {
           function(server_name)
             local server = servers[server_name] or {}

@@ -27,7 +27,7 @@ return {
           light = "lotus",
         },
       }
-      vim.cmd.colorscheme("rose-pine-main")
+      vim.cmd.colorscheme("kanagawa")
       -- vim.cmd.colorscheme("kanagawa-wave")
       --   local function set_color_scheme()
       --     local hour = tonumber(os.date("%H"))
@@ -47,7 +47,7 @@ return {
       --       set_color_scheme()
       --     end)
       --   )
-      --   vim.cmd.hi("Comment gui=none")
+      vim.cmd.hi("Comment gui=none")
     end,
   },
 }
