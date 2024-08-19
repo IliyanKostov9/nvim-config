@@ -17,6 +17,9 @@ vim.opt.mouse = "a"
 -- Don't show the mode, since it's already in the status line
 vim.opt.showmode = false
 
+-- Default browser for MarkdownPreview
+vim.g.mkdp_browser = "librewolf"
+
 -- Sync clipboard between OS and Neovim.
 vim.opt.clipboard = "unnamedplus"
 -- Enable break indent

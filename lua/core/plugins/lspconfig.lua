@@ -6,7 +6,7 @@ return {
       "williamboman/mason-lspconfig.nvim",
       "WhoIsSethDaniel/mason-tool-installer.nvim",
       "mfussenegger/nvim-jdtls",
-      -- Useful status updates for LSP.
+      -- Useful status updates foor LSP.
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
       { "j-hui/fidget.nvim", opts = {} },
       -- `neodev` configures Lua LSP for your Neovim config, runtime and plugins
@@ -181,7 +181,6 @@ return {
           end,
         },
       }
-
       vim.lsp.set_log_level("WARN")
     end,
   },
