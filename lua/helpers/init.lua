@@ -6,4 +6,5 @@ return {
   require("helpers.plugins.undotree"),
   require("helpers.plugins.Comment"),
   require("helpers.plugins.markdown-preview"),
+  require("helpers.plugins.ltex-ls"),
 }
