@@ -10,5 +10,4 @@ return {
   require("core.plugins.cmp"),
   require("core.plugins.mini"),
   require("core.plugins.treesitter"),
-  require("core.plugins.luarocks"),
 }
