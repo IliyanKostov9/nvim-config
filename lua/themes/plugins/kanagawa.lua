@@ -11,15 +11,30 @@ return {
         keywordStyle = { italic = true },
         statementStyle = { bold = true },
         typeStyle = {},
-        transparent = false,
-        dimInactive = false,
+        transparent = true,
+        dimInactive = true,
         terminalColors = true,
         colors = {
           palette = {},
           theme = { wave = {}, lotus = {}, dragon = {}, all = {} },
         },
         overrides = function(colors)
-          return {}
+          local theme = colors.theme
+          return {
+            NormalFloat = { bg = "none" },
+            FloatBorder = { bg = "none" },
+            FloatTitle = { bg = "none" },
+
+            Pmenu = { fg = theme.ui.shade0, bg = "none" },
+            PmenuSel = { fg = "NONE", bg = theme.ui.bg_p2 },
+            PmenuSbar = { bg = theme.ui.bg_m1 },
+            PmenuThumb = { bg = theme.ui.bg_p2 },
+
+            LineNr = { bg = "none" },
+            SignColumn = { bg = "none" },
+            FoldColumn = { bg = "none" },
+            CursorLineNr = { bg = "none" },
+          }
         end,
         theme = "wave",
         background = {
@@ -28,7 +43,7 @@ return {
         },
       }
       vim.cmd.colorscheme("kanagawa")
-      -- vim.cmd.colorscheme("kanagawa-wave")
+
       --   local function set_color_scheme()
       --     local hour = tonumber(os.date("%H"))
       --     if hour >= 7 and hour < 20 then
