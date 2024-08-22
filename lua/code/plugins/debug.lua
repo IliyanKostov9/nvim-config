@@ -15,7 +15,7 @@ return {
       automatic_installation = true,
       handlers = {},
       ensure_installed = {
-        "delve",
+        -- "delve",
         "java-debug-adapter",
         "java-test",
       },

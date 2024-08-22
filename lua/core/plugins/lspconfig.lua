@@ -156,6 +156,7 @@ return {
         -- JavaScript
         "typescript-language-server",
         "eslint-lsp",
+        "eslint_d",
 
         -- Utils
         -- "azure-pipelines-language-server",

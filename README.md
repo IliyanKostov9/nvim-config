@@ -1,9 +1,7 @@
 # Introduction
-
 This project consists of my favorite plugins, that are either included from kickstart.nvim or me manually adding them. 
 
 ## Structure
-
  I have ordered the plugin directory structure into different categories:
 
 - core: contains the most essential *can't live without* plugins
@@ -16,7 +14,6 @@ This project consists of my favorite plugins, that are either included from kick
 ## Plugin list
 
 1. Core
-
 - [cmp](https://github.com/hrsh7th/nvim-cmp)
 - [conform](https://github.com/stevearc/conform.nvim)
 - [lspconfig](https://github.com/neovim/nvim-lspconfig)
@@ -25,11 +22,9 @@ This project consists of my favorite plugins, that are either included from kick
 - [treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 
 2. Git
-
 - [vim-fugitive](https://github.com/tpope/vim-fugitive)
 
 3. Helpers
-
 - [Comment](https://github.com/numToStr/Comment.nvim)
 - [better-escape](https://github.com/max397574/better-escape.nvim)
 - [todo-comments](https://github.com/folke/todo-comments.nvim)
@@ -37,7 +32,6 @@ This project consists of my favorite plugins, that are either included from kick
 - [which-key](https://github.com/folke/which-key.nvim)
 
 4. Kickstart
-
 - [autopairs](https://github.com/windwp/nvim-autopairs)
 - [debug](https://github.com/mfussenegger/nvim-dap)
 - [indent_line](https://github.com/lukas-reineke/indent-blankline.nvim)
@@ -46,19 +40,13 @@ This project consists of my favorite plugins, that are either included from kick
 - [gitsigns](https://github.com/lewis6991/gitsigns.nvim)
 
 5. Themes
-
 - [kanagawa](https://github.com/rebelot/kanagawa.nvim)
 - [vim-devicons](https://github.com/ryanoasis/vim-devicons)
 
 6. Tracking
-
 - [Wakatime](https://wakatime.com/neovim-plugin)
 
-
-
-
 ## Mason
-
 - azure-pipelines-language-server
 - black
 - cmake-language-server
