@@ -12,7 +12,8 @@ return {
         statementStyle = { bold = true },
         typeStyle = {},
         transparent = true,
-        dimInactive = true,
+        -- Disabled, because it breakes picom transparency
+        dimInactive = false,
         terminalColors = true,
         colors = {
           palette = {},
