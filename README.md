@@ -40,6 +40,8 @@ This project contains my personal neovim keybindings, along with a few plugins, 
 <img src="./assets/env_screenshot_1.png" alt="Environment screenshot 1" width="800"/>
 
 <img src="./assets/env_screenshot_2.png" alt="Environment screenshot 2" width="800"/>
+
+<img src="./assets/env_screenshot_3.png" alt="Environment screenshot 3" width="800"/>
 </p>
 
 ## 🏗️ Structure
@@ -86,8 +88,6 @@ I have ordered my modules into different categories:
 └── README.md
 ```
 
-<details>
-<summary>Module details</summary>
 
 | Module           | Description      |
 | :------------- | :----------: |
@@ -106,9 +106,10 @@ I have ordered my modules into different categories:
 | themes          |Plugin directory for storing themes for Neovim|
 | tracking          |Plugin directory for tracking any type of events when using Neovim (for example track the time and type of language when coding)|
 
-</details>
-
 ## 🔌 Plugins 
+
+<details>
+<summary>Expand to view plugins</summary>
 
 1. Code
 - [autopairs](https://github.com/windwp/nvim-autopairs)
@@ -161,11 +162,13 @@ I have ordered my modules into different categories:
 9. Tracking
 - [Wakatime](https://wakatime.com/neovim-plugin)
 
+</details>
+
 ##  :wrench: LSP (Mason)
 This part contains all of the Language servers.
 
 <details>
-<summary>LSP details</summary>
+<summary>Expand to view LSP</summary>
 
 <ul>
 <li>Ansible
