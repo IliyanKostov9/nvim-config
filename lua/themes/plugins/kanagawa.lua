@@ -60,9 +60,6 @@ return {
           light = "lotus",
         },
       }
-
-      vim.cmd.colorscheme("kanagawa")
-      vim.cmd.hi("Comment gui=none")
     end,
   },
 }
