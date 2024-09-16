@@ -53,6 +53,23 @@ return {
         })
       end, { desc = "[/] Fuzzily search in current buffer" })
 
+      -- Find & replace
+      vim.keymap.set("n", "<leader>fr", function()
+        local find_text = vim.fn.input("Find: ")
+        local replace_text = vim.fn.input("Replace: ")
+
+        vim.cmd(string.format("args `rg '%s' -l`", find_text))
+        pcall(function()
+          vim.cmd(
+            string.format(
+              "argdo %%s/%s/%s/gc | update",
+              vim.fn.escape(find_text, "/"),
+              vim.fn.escape(replace_text, "/")
+            )
+          )
+        end)
+      end, { desc = "[F]ind and [R]eplace" })
+
       -- Marks
       vim.keymap.set("n", "<leader>mm", builtin.marks, { desc = "List all [M]arks for [M]om" })
       -- Jumplist
