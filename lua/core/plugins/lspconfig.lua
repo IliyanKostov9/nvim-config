@@ -174,10 +174,6 @@ return {
         -- ensure_installed = { "ltex" },
         handlers = {
           function(server_name)
-            -- Temp workaround for tsserver deprecated warning issue
-            if server_name == "tsserver" then
-              server_name = "ts_ls"
-            end
             local server = servers[server_name] or {}
             -- This handles overriding only values explicitly passed
             -- by the server configuration above. Useful when disabling
