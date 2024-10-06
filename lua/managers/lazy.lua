@@ -29,5 +29,5 @@ require("lazy").setup({
 }, { require("managers.ui") })
 
 -- Colors
-vim.cmd.colorscheme("rose-pine")
+vim.cmd.colorscheme("retrobox")
 vim.cmd.hi("Comment gui=none")

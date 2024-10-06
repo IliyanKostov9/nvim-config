@@ -28,6 +28,7 @@ return {
         lua = { "stylua" },
         python = { "isort", "black" },
         java = { "google-java-format" },
+        sh = { "beautysh" },
         typescript = { "eslint_d" },
         javascript = { { "prettierd", "prettier" } },
         javascriptreact = { "eslint_d" },

@@ -158,6 +158,10 @@ return {
         "eslint-lsp",
         "eslint_d",
 
+        -- Bash
+        "bash-language-server",
+        "beautysh",
+
         -- Utils
         -- "azure-pipelines-language-server",
         "editorconfig-checker",
