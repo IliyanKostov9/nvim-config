@@ -8,10 +8,10 @@ return {
       "mfussenegger/nvim-jdtls",
       -- Useful status updates foor LSP.
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { "j-hui/fidget.nvim",       opts = {} },
+      { "j-hui/fidget.nvim", opts = {} },
       -- `neodev` configures Lua LSP for your Neovim config, runtime and plugins
       -- used for completion, annotations and signatures of Neovim apis
-      { "folke/neodev.nvim",       opts = {} },
+      { "folke/neodev.nvim", opts = {} },
     },
     config = function()
       --  This function gets run when an LSP attaches to a particular buffer.
@@ -166,7 +166,6 @@ return {
         -- "azure-pipelines-language-server",
         "editorconfig-checker",
         "markdownlint",
-        "prettier",
         "prettierd",
         "xmlformatter",
         "yaml-language-server",
