@@ -34,7 +34,7 @@ local light_color_theme = "rose-pine-dawn"
 local function schedule_color_scheme()
   local current_hour = tonumber(os.date("%H"))
   local morning_hour = 7
-  local evening_hour = 17
+  local evening_hour = 16
 
   if current_hour >= morning_hour and current_hour < evening_hour then
     vim.cmd.colorscheme(light_color_theme)
