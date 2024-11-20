@@ -33,7 +33,7 @@ return {
         javascript = { "prettierd" },
         javascriptreact = { "prettierd" },
         typescriptreact = { "prettierd" },
-        svelte = { "eslint_d" },
+        svelte = { "prettierd" },
         xml = { "xmlformat" },
         yaml = { "prettierd" },
         yml = { "prettierd" },
