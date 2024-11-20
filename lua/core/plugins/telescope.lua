@@ -89,15 +89,15 @@ return {
         check_if_user_in_git(builtin.git_files)
       end, { desc = "Search [G]it files for [G]ood" })
 
-      vim.keymap.set("n", "<leader>giff", function()
+      vim.keymap.set("n", "<leader>gf", function()
         check_if_user_in_git(builtin.git_status)
       end, { desc = "Show the [G]it d[I][F][F]erence for changed files" })
 
-      vim.keymap.set("n", "<leader>gbr", function()
+      vim.keymap.set("n", "<leader>br", function()
         check_if_user_in_git(builtin.git_branches)
       end, { desc = "List all local and remote [G]it [B][R]anches" })
 
-      vim.keymap.set("n", "<leader>gcm", function()
+      vim.keymap.set("n", "<leader>cm", function()
         check_if_user_in_git(builtin.git_commits)
       end, { desc = "List all [G]it [C]o[M]mits" })
 
