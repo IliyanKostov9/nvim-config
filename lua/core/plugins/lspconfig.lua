@@ -115,9 +115,6 @@ return {
 
         -- Java
         "google-java-format",
-        "java-debug-adapter",
-        "java-test",
-        "jdtls",
         "lombok-nightly",
 
         -- Kotlin
@@ -129,9 +126,6 @@ return {
         -- "csharp-language-server",
         -- "csharpier",
 
-        -- Go
-        -- "delve",
-
         -- Lua
         "stylua",
 
@@ -140,8 +134,9 @@ return {
         "nixpkgs-fmt",
         "rnix-lsp",
 
-        -- Virt
+        -- docker
         "dockerfile-language-server",
+        "hadolint",
 
         -- JavaScript
         "typescript-language-server",
@@ -152,14 +147,15 @@ return {
         "beautysh",
 
         -- Utils
-        -- "azure-pipelines-language-server",
         "editorconfig-checker",
         "markdownlint",
         "prettierd",
         "xmlformatter",
         "yaml-language-server",
         "yamllint",
+        "jsonlint",
       })
+
       require("mason-tool-installer").setup { ensure_installed = ensure_installed }
       require("mason-lspconfig").setup {
         -- Commented because ltex-ls is already in use
