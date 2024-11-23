@@ -27,8 +27,10 @@ vim.cmd.hi("Comment gui=none")
 
 -- Colors
 local schedule_enabled = true
-local dark_color_theme = "retrobox"
-local light_color_theme = "rose-pine-dawn"
+local dark_color_theme = "nordfox"
+-- "retrobox"
+local light_color_theme = "paper"
+-- rose-pine-dawn
 
 -- If scheduled color is enabled
 if schedule_enabled == true then

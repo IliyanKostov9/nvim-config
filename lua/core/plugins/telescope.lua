@@ -75,7 +75,6 @@ return {
       -- Jumplist
       vim.keymap.set("n", "<leader>jmp", builtin.jumplist, { desc = "List all [J]u[M][P]s" })
       -- Git
-      --
       local function check_if_user_in_git(builtin_fn)
         local is_user_in_git_repo = pcall(function()
           builtin_fn()
