@@ -23,7 +23,6 @@ require("lazy").setup({
   -- Themes
   require("themes.init"),
 }, { require("managers.ui") })
-
 vim.cmd.hi("Comment gui=none")
 
 -- Colors
@@ -31,27 +30,14 @@ local schedule_enabled = true
 local dark_color_theme = "retrobox"
 local light_color_theme = "rose-pine-dawn"
 
-local function schedule_color_scheme()
-  local current_hour = tonumber(os.date("%H"))
-  local morning_hour = 7
-  local evening_hour = 16
-
-  if current_hour >= morning_hour and current_hour < evening_hour then
-    vim.cmd.colorscheme(light_color_theme)
-  else
-    vim.cmd.colorscheme(dark_color_theme)
-  end
-end
-
 -- If scheduled color is enabled
 if schedule_enabled == true then
-  schedule_color_scheme()
   local timer = vim.loop.new_timer()
   timer:start(
     0,
     3600000,
     vim.schedule_wrap(function()
-      schedule_color_scheme()
+      require("settings.funcs").schedule_color_scheme(light_color_theme, dark_color_theme)
     end)
   )
 else

@@ -1,4 +1,4 @@
-require("settings.funcs")
+local funcs = require("settings.funcs")
 
 vim.keymap.set("x", "<leader>p", '"_dP', { desc = "Paste the text without copying the old text" })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Remain cursor in the middle when scrolling up" })
@@ -25,19 +25,19 @@ vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right win
 vim.keymap.set("n", "<C-j>", "<C---[[ w><C-j>", { desc = "Move focus to the lower window" })
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
-vim.keymap.set("i", "jk", _G.better_escape_vim, { desc = "Better escape vim jk", noremap = true, silent = true })
-vim.keymap.set("i", "jj", _G.better_escape_vim, { desc = "Better escape vim jj", noremap = true, silent = true })
+vim.keymap.set("i", "jk", funcs.better_escape_vim, { desc = "Better escape vim jk", noremap = true, silent = true })
+vim.keymap.set("i", "jj", funcs.better_escape_vim, { desc = "Better escape vim jj", noremap = true, silent = true })
 
-vim.keymap.set("n", "<leader>lx", disable_lsp, { desc = "Disable LSP" })
+vim.keymap.set("n", "<leader>lx", funcs.disable_lsp, { desc = "Disable LSP" })
 
 vim.keymap.set("n", "<M-z>", "<cmd>:set wrap!<cr>", { desc = "Auto wrap", noremap = true, silent = true })
 
-vim.keymap.set("n", "<leader>ln", change_line_number, { desc = "Set line number", noremap = true, silent = true })
+vim.keymap.set("n", "<leader>ln", funcs.change_line_number, { desc = "Set line number", noremap = true, silent = true })
 
 vim.keymap.set(
   "n",
   "<C-g>",
-  cd_to_git_root,
+  funcs.cd_to_git_root,
   { desc = "Go to the root of the git project", noremap = true, silent = true }
 )
-vim.keymap.set("n", "<leader>gweb", "<cmd>Git browse<cr>", { desc = "Navigate to git remote via browser" })
+vim.keymap.set("n", "<leader>gw", "<cmd>Git browse<cr>", { desc = "Navigate to git remote via browser" })
