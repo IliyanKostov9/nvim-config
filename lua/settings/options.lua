@@ -13,8 +13,8 @@ vim.opt.relativenumber = true
 -- Enable mouse mode
 vim.opt.mouse = "a"
 
--- Don't show the mode, since it's already in the status line
-vim.opt.showmode = false
+-- Mode
+vim.opt.showmode = true
 
 -- Default browser for MarkdownPreview
 vim.g.mkdp_browser = "librewolf"

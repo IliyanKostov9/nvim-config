@@ -4,7 +4,6 @@ return {
     build = ":TSUpdate",
     opts = {
       ensure_installed = "all",
-      -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = {
         enable = true,

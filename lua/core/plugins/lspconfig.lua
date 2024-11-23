@@ -5,7 +5,6 @@ return {
       { "williamboman/mason.nvim", config = true }, -- NOTE: Must be loaded before dependants
       "williamboman/mason-lspconfig.nvim",
       "WhoIsSethDaniel/mason-tool-installer.nvim",
-      "mfussenegger/nvim-jdtls",
       { "j-hui/fidget.nvim", opts = {} },
       { "folke/neodev.nvim", opts = {} },
     },
@@ -131,20 +130,15 @@ return {
         -- "csharpier",
 
         -- Go
-        -- Commented, because for some reason it's unable to find std module
-        "delve",
+        -- "delve",
 
         -- Lua
         "stylua",
-        -- "lua-language-server",
 
         -- Nix
-        -- Note: Requires prior to  use `rustup default stable`
+        -- NOTE: Requires prior to  use `rustup default stable`
         "nixpkgs-fmt",
         "rnix-lsp",
-
-        -- Cmake
-        "cmake-language-server",
 
         -- Virt
         "dockerfile-language-server",
