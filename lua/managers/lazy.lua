@@ -29,7 +29,7 @@ vim.cmd.hi("Comment gui=none")
 local schedule_enabled = true
 local dark_color_theme = "nordfox"
 -- "retrobox"
-local light_color_theme = "paper"
+local light_color_theme = "dayfox"
 -- rose-pine-dawn
 
 -- If scheduled color is enabled
