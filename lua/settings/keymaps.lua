@@ -6,7 +6,7 @@ vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Remain cursor in the middle wh
 
 vim.keymap.set("n", "<C-p>", vim.cmd.Ex, { desc = "Shortcut for :Ex" })
 
-vim.keymap.set("n", "<leader>`", function()
+vim.keymap.set("n", "<leader>x", function()
   local path = vim.fn.expand("%:p:h")
   vim.cmd("silent !tmux split-window -v -c " .. path, " -p 5")
 end, { desc = "Create a horizontal tmux pane for VSCode like cmd", noremap = true, silent = true })

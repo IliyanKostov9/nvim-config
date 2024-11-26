@@ -10,6 +10,7 @@ return {
         dockerfile = { "hadolint" },
         json = { "jsonlint" },
         yaml = { "yamllint" },
+        yml = { "yamllint" },
         python = { "pylint" },
         ansible = { "ansible-lint" },
         kotlin = { "ktlint" },
