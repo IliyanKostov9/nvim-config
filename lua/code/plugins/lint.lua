@@ -14,6 +14,10 @@ return {
         python = { "pylint" },
         ansible = { "ansible-lint" },
         kotlin = { "ktlint" },
+        -- javascript = { "eslint_d" },
+        -- typescript = { "eslint_d" },
+        -- javascriptreact = { "eslint_
+        -- typescriptreact = { "eslint_
       }
       -- You can disable the default linters by setting their filetypes to nil:
       -- lint.linters_by_ft['json'] = nil

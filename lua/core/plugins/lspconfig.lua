@@ -140,7 +140,7 @@ return {
 
         -- JavaScript
         "typescript-language-server",
-        "eslint-lsp",
+        -- "eslint_d",
 
         -- Bash
         "bash-language-server",
