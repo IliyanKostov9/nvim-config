@@ -114,7 +114,7 @@ return {
         "isort",
 
         -- Java
-        "google-java-format",
+        -- "google-java-format",
         "lombok-nightly",
 
         -- Kotlin
