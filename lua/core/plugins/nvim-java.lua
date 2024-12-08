@@ -1,7 +1,22 @@
 return {
   "nvim-java/nvim-java",
   config = function()
-    require("java").setup()
+    require("java").setup {
+      notifications = {
+        dap = false,
+      },
+      jdk = {
+        -- TODO: dynamically set it to false, for Java > 8
+        auto_install = false,
+      },
+      spring_boot_tools = {
+        enable = false,
+      },
+      java_debug_adapter = {
+        enable = false,
+      },
+    }
+
     require("lspconfig").jdtls.setup {}
   end,
   dependencies = {
