@@ -41,5 +41,5 @@ vim.keymap.set(
   { desc = "Go to the root of the git project", noremap = true, silent = true }
 )
 
-vim.keymap.set("n", "<leader>gw", "<cmd>Git browse<cr>", { desc = "Navigate to git remote via browser" })
+vim.keymap.set("n", "<leader>web", "<cmd>Git browse<cr>", { desc = "Navigate to git remote via browser" })
 vim.keymap.set("n", "<leader>fg", "<cmd>vertical Git diff HEAD<cr>", { desc = "Git diff vertical" })
