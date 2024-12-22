@@ -33,15 +33,30 @@ function funcs.disable_lsp()
   }
 end
 
-function funcs.schedule_color_scheme(light_color_theme, dark_color_theme)
+local function set_alacritty_theme(color_theme_hex, theme_name)
+  local nixos_path = "/etc/nixos"
+  local tmux_status_bar_color = vim.fn.system("tmux show-options -g status-style")
+  local bg_color = tmux_status_bar_color:match("bg#?=([#%x]+)")
+
+  if bg_color ~= color_theme_hex then
+    print("Changing Nix alacritty theme to:", theme_name)
+    vim.fn.chdir(nixos_path)
+    vim.fn.system("make home-update")
+  end
+end
+
+function funcs.schedule_color_scheme(light_color_theme, dark_color_theme, light_color_theme_hex, dark_color_theme_hex)
   local current_hour = tonumber(os.date("%H"))
+
   local morning_hour = 7
   local evening_hour = 16
 
   if current_hour >= morning_hour and current_hour < evening_hour then
     vim.cmd.colorscheme(light_color_theme)
+    set_alacritty_theme(light_color_theme_hex, light_color_theme)
   else
     vim.cmd.colorscheme(dark_color_theme)
+    set_alacritty_theme(dark_color_theme_hex, dark_color_theme)
   end
 end
 

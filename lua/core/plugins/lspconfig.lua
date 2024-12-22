@@ -143,13 +143,14 @@ return {
         -- "eslint_d",
 
         -- Bash
-        "bash-language-server",
-        "beautysh",
+        -- "bash-language-server",
+        -- "beautysh",
 
         -- Utils
         "editorconfig-checker",
         "markdownlint",
-        "prettierd",
+        -- "prettierd",
+        "biome",
         "xmlformatter",
         "yaml-language-server",
         "yamllint",

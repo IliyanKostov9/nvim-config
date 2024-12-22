@@ -13,7 +13,7 @@ return {
         yml = { "yamllint" },
         python = { "pylint" },
         ansible = { "ansible-lint" },
-        kotlin = { "ktlint" },
+        -- kotlin = { "ktlint" },
         -- javascript = { "eslint_d" },
         -- typescript = { "eslint_d" },
         -- javascriptreact = { "eslint_

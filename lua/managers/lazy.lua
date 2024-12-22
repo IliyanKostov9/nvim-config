@@ -27,10 +27,11 @@ vim.cmd.hi("Comment gui=none")
 
 -- Colors
 local schedule_enabled = true
-local dark_color_theme = "nordfox"
--- "retrobox"
 local light_color_theme = "dayfox"
--- rose-pine-dawn
+local light_color_theme_hex = "#f6f2ee"
+
+local dark_color_theme = "nordfox"
+local dark_color_theme_hex = "#2e3440"
 
 -- If scheduled color is enabled
 if schedule_enabled == true then
@@ -39,7 +40,12 @@ if schedule_enabled == true then
     0,
     3600000,
     vim.schedule_wrap(function()
-      require("settings.funcs").schedule_color_scheme(light_color_theme, dark_color_theme)
+      require("settings.funcs").schedule_color_scheme(
+        light_color_theme,
+        dark_color_theme,
+        light_color_theme_hex,
+        dark_color_theme_hex
+      )
     end)
   )
 else
