@@ -1,5 +1,6 @@
 return {
   "nvim-java/nvim-java",
+  ft = { "java" },
   config = function()
     require("java").setup {
       notifications = {
@@ -13,7 +14,7 @@ return {
         enable = false,
       },
       java_debug_adapter = {
-        enable = false,
+        enable = true,
       },
     }
 
