@@ -34,14 +34,20 @@ function funcs.disable_lsp()
 end
 
 local function set_alacritty_theme(color_theme_hex, theme_name)
-  local nixos_path = "/etc/nixos"
-  local tmux_status_bar_color = vim.fn.system("tmux show-options -g status-style")
-  local bg_color = tmux_status_bar_color:match("bg#?=([#%x]+)")
+  local is_tmux_running = vim.fn.system { "tmux", "ls" }
 
-  if bg_color ~= color_theme_hex then
-    print("Changing Nix alacritty theme to:", theme_name)
-    vim.fn.chdir(nixos_path)
-    vim.fn.system("make home-update")
+  if not string.find(is_tmux_running, "no server running") then
+    local nixos_path = "/etc/nixos"
+    local tmux_status_bar_color = vim.fn.system("tmux show-options -g status-style")
+    local bg_color = tmux_status_bar_color:match("bg#?=([#%x]+)")
+
+    if bg_color ~= color_theme_hex then
+      print("Changing Nix alacritty theme to: ", theme_name)
+      vim.fn.chdir(nixos_path)
+      vim.fn.system("make home-update")
+    end
+  else
+    print("Tmux is not running! Won't attempt to change alacritty theme...")
   end
 end
 
