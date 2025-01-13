@@ -1,0 +1,13 @@
+when:
+  branch: master
+  event: [push]
+
+steps:
+  - name: scanning
+    image: python:3.11.11
+    commands:
+      - python -m pip install --upgrade pip -q
+      - pip install ggshield -q
+      - ggshield secret scan repo . --format text --with-incident-details
+
+    secrets: [GITGUARDIAN_API_KEY]

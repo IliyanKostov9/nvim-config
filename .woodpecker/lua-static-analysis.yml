@@ -1,0 +1,9 @@
+when:
+  branch: master
+  event: [push]
+
+steps:
+  - name: check
+    image: ghcr.io/lunarmodules/luacheck:latest
+    commands:
+      - luacheck .
