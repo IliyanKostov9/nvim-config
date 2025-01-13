@@ -27,11 +27,11 @@ vim.cmd.hi("Comment gui=none")
 
 -- Colors
 local schedule_enabled = true
-local light_color_theme = "dayfox"
-local light_color_theme_hex = "#f6f2ee"
+local light_color_theme = "rose-pine-dawn"
+local light_color_theme_hex = "#faf4ed"
 
-local dark_color_theme = "nordfox"
-local dark_color_theme_hex = "#2e3440"
+local dark_color_theme = "kanagawa-dragon"
+local dark_color_theme_hex = "#181616"
 
 -- If scheduled color is enabled
 if schedule_enabled == true then

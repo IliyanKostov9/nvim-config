@@ -7,8 +7,7 @@ return {
         dap = false,
       },
       jdk = {
-        -- TODO: dynamically set it to false, for Java > 8
-        auto_install = false,
+        auto_install = true,
       },
       spring_boot_tools = {
         enable = false,
