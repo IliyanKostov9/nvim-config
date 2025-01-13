@@ -75,8 +75,8 @@ return {
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
-        -- tsserver = {},
         yamlls = {},
+        -- jdtls = {},
         lua_ls = {
           -- cmd = {...},
           -- filetypes = { ...},
@@ -115,7 +115,6 @@ return {
 
         -- Java
         "google-java-format",
-        "lombok-nightly",
 
         -- Kotlin
         -- "kotlin-debug-adapter",
@@ -159,11 +158,11 @@ return {
 
       require("mason-tool-installer").setup { ensure_installed = ensure_installed }
       require("mason-lspconfig").setup {
-        -- Commented because ltex-ls is already in use
         -- ensure_installed = { "ltex" },
         handlers = {
           function(server_name)
             local server = servers[server_name] or {}
+
             -- This handles overriding only values explicitly passed
             -- by the server configuration above. Useful when disabling
             -- certain features of an LSP (for example, turning off formatting for tsserver)
