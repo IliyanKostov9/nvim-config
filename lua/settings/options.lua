@@ -72,3 +72,6 @@ vim.opt.hlsearch = true
 vim.opt.incsearch = true
 
 vim.lsp.set_log_level("debug")
+
+-- Disable status line
+vim.opt.laststatus = 0
