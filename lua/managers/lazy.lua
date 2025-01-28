@@ -26,7 +26,7 @@ require("lazy").setup({
 vim.cmd.hi("Comment gui=none")
 
 -- Colors
-local schedule_enabled = true
+local schedule_enabled = false
 local light_color_theme = "rose-pine-dawn"
 local light_color_theme_hex = "#faf4ed"
 
@@ -51,4 +51,5 @@ if schedule_enabled == true then
 else
   -- If not, then enable dark color by default
   vim.cmd.colorscheme(dark_color_theme)
+  vim.api.nvim_set_hl(0, "LineNr", { fg = "#859477", bold = true })
 end
