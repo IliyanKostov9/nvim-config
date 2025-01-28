@@ -12,7 +12,7 @@ return {
         statementStyle = { bold = true },
         typeStyle = {},
         transparent = true,
-        -- Disabled, because it breakes picom transparency
+        -- NOTE: Disabled, because it breakes picom transparency
         dimInactive = false,
         terminalColors = true,
         colors = {
@@ -30,7 +30,16 @@ return {
         },
         overrides = function(colors)
           local theme = colors.theme
+
+          local makeDiagnosticColor = function(color)
+            local c = require("kanagawa.lib.color")
+            return { fg = color, bg = c(color):blend(theme.ui.bg, 0.95):to_hex() }
+          end
           return {
+            DiagnosticVirtualTextHint = makeDiagnosticColor(theme.diag.hint),
+            DiagnosticVirtualTextInfo = makeDiagnosticColor(theme.diag.info),
+            DiagnosticVirtualTextWarn = makeDiagnosticColor(theme.diag.warning),
+            DiagnosticVirtualTextError = makeDiagnosticColor(theme.diag.error),
             -- Save an hlgroup with dark background and dimmed foreground
             -- so that you can use it where your still want darker windows.
             -- E.g.: autocmd TermOpen * setlocal winhighlight=Normal:NormalDark
