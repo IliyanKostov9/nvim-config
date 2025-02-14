@@ -92,66 +92,60 @@ return {
           },
         },
       }
-      --  You can press `g?` for help in this menu.
       require("mason").setup()
 
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
 
-        -- Ansible
+        -- NOTE: Ansible
         -- "ansible-language-server",
         -- "ansible-lint",
 
-        -- Terraform
+        -- NOTE: Terraform
         "terraform-ls",
-        "tflint",
+        -- "tflint",
 
-        -- Python
+        -- NOTE: Python
         "black",
         "pylint",
         "pyright",
         "mypy",
         "isort",
 
-        -- Java
+        -- NOTE: Java
         "google-java-format",
 
-        -- Kotlin
+        -- NOTE: Kotlin
         -- "kotlin-debug-adapter",
         -- "kotlin-language-server",
         -- "ktfmt",
 
-        -- C#
+        -- NOTE:C#
         -- "csharp-language-server",
         -- "csharpier",
 
-        -- Lua
+        -- NOTE: Lua
         "stylua",
 
-        -- Nix
+        -- NOTE: Nix
         -- NOTE: Requires prior to  use `rustup default stable`
         "nixpkgs-fmt",
         "rnix-lsp",
 
-        -- docker
+        -- NOTE: Docker
         "dockerfile-language-server",
-        "hadolint",
 
-        -- JavaScript
+        -- NOTE: JavaScript
         "typescript-language-server",
         -- "eslint_d",
 
-        -- Bash
+        -- NOTE: Bash
         -- "bash-language-server",
         -- "beautysh",
 
-        -- Utils
+        -- NOTE: Utils
         "editorconfig-checker",
-        "markdownlint",
-        -- "prettierd",
-        "biome",
-        "xmlformatter",
-        "yaml-language-server",
+        "prettierd",
         "yamllint",
         "jsonlint",
       })
