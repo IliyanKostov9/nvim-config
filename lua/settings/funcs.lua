@@ -18,6 +18,16 @@ function funcs.cd_to_git_root()
   end
 end
 
+function funcs.get_git_root()
+  local git_root = vim.fn.systemlist("git rev-parse --show-toplevel")[1]
+
+  if git_root == nil or git_root == "" then
+    print("Not in a Git repository")
+  else
+    return git_root
+  end
+end
+
 function funcs.change_line_number()
   local is_relative_number_enabled = vim.wo.relativenumber
   vim.wo.relativenumber = not is_relative_number_enabled
