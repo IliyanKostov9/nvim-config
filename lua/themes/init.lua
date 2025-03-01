@@ -1,5 +1,5 @@
 return {
-  require("themes.plugins.rose-pine"),
+  -- require("themes.plugins.rose-pine"),
   require("themes.plugins.kanagawa"),
   -- require("themes.plugins.gruvbox"),
   -- require("themes.plugins.solarized"),
@@ -7,7 +7,7 @@ return {
   -- require("themes.plugins.everforest"),
   -- require("themes.plugins.zenburn"),
   -- require("themes.plugins.tomorrow-night"),
-  require("themes.plugins.nightfox"),
+  -- require("themes.plugins.nightfox"),
   -- require("themes.plugins.material"),
   -- require("themes.plugins.paper"),
 }
