@@ -6,7 +6,36 @@ return {
       "williamboman/mason-lspconfig.nvim",
       "WhoIsSethDaniel/mason-tool-installer.nvim",
       { "j-hui/fidget.nvim", opts = {} },
-      { "folke/neodev.nvim", opts = {} },
+      { "j-hui/fidget.nvim", opts = {} },
+      {
+        "folke/lazydev.nvim",
+        opts = {
+          -- saghen/blink.cmp
+          library = {
+            -- See the configuration section for more details
+            -- Load luvit types when the `vim.uv` word is found
+            "LazyVim",
+            { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+          },
+        },
+      },
+      -- TODO: Requires fuzzy cargo dep
+      -- {
+      --   "saghen/blink.cmp",
+      --   dependencies = "rafamadriz/friendly-snippets",
+      --   opts = {
+      --     sources = {
+      --       default = { "lazydev", "lsp", "path", "snippets", "buffer" },
+      --       providers = {
+      --         lazydev = {
+      --           name = "LazyDev",
+      --           module = "lazydev.integrations.blink",
+      --           score_offset = 100,
+      --         },
+      --       },
+      --     },
+      -- },
+      -- },
     },
     config = function()
       --  This function gets run when an LSP attaches to a particular buffer.
