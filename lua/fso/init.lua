@@ -1,3 +1,3 @@
 return {
-	require("fso.plugins.neo-tree")
+  -- require("fso.plugins.neo-tree")
 }
