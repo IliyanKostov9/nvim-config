@@ -76,4 +76,9 @@ function funcs.schedule_color_scheme(light_color_theme, dark_color_theme, light_
   end
 end
 
+function funcs.split_tmux_pane()
+  local path = vim.fn.expand("%:p:h")
+  vim.cmd("silent !tmux split-window -v -c " .. vim.fn.shellescape(path) .. " -p 50")
+end
+
 return funcs
