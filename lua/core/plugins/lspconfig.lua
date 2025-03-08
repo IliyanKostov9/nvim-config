@@ -158,7 +158,7 @@ return {
 
         -- NOTE: Nix
         -- NOTE: Requires prior to  use `rustup default stable`
-        "nixpkgs-fmt",
+        "alejandra",
         "rnix-lsp",
 
         -- NOTE: Docker

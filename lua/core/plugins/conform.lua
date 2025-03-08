@@ -38,7 +38,7 @@ return {
 
         python = { "isort", "black" },
         java = { "google-java-format" },
-        -- nix = { "nixpkgs-fmt" },
+        nix = { "alejandra" },
         lua = { "stylua" },
         kotlin = { "prettierd" },
         -- cs = { "csharpier" },
