@@ -131,14 +131,12 @@ return {
         -- "ansible-lint",
 
         -- NOTE: Terraform
-        "terraform-ls",
+        -- "terraform-ls",
         -- "tflint",
 
         -- NOTE: Python
         "black",
-        "pylint",
         "pyright",
-        "mypy",
         "isort",
 
         -- NOTE: Java
