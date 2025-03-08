@@ -38,10 +38,10 @@ return {
 
         python = { "isort", "black" },
         java = { "google-java-format" },
-        nix = { "nixpkgs-fmt" },
+        -- nix = { "nixpkgs-fmt" },
         lua = { "stylua" },
-        kotlin = { "ktlint" },
-        cs = { "csharpier" },
+        kotlin = { "prettierd" },
+        -- cs = { "csharpier" },
         -- sh = { "beautysh" },
       },
       fallback_formatter = "prettierd",

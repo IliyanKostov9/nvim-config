@@ -16,8 +16,8 @@ return {
         -- kotlin = { "ktlint" },
         -- javascript = { "eslint_d" },
         -- typescript = { "eslint_d" },
-        -- javascriptreact = { "eslint_
-        -- typescriptreact = { "eslint_
+        -- javascriptreact = { "eslint_d" },
+        -- typescriptreact = { "eslint_d" },
       }
       -- You can disable the default linters by setting their filetypes to nil:
       -- lint.linters_by_ft['json'] = nil
