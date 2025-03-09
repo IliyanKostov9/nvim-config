@@ -71,7 +71,7 @@ M.get_plugins = function()
   for mod, mod_table in pairs(M.options) do
     for plugin, enabled in pairs(mod_table) do
       if enabled then
-        table.insert(plugins, require(mod .. ".plugins." .. plugin))
+        table.insert(plugins, require("plugins." .. mod .. "." .. plugin))
       end
     end
   end
