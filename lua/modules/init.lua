@@ -1,6 +1,11 @@
 local M = {}
 
 M.options = {
+
+  builtins = {
+    ["vim-sleuth"] = true,
+  },
+
   code = {
     indent_line = false,
     otter = false,

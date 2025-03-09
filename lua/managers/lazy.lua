@@ -36,7 +36,6 @@ modules.options.tracking.wakatime = true
 local modules_plugins = modules.get_plugins()
 
 require("lazy").setup({
-  "tpope/vim-sleuth",
   modules_plugins,
 }, { require("managers.ui") })
 
