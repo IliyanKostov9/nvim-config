@@ -46,3 +46,6 @@ luac.out
 
 # End of https://www.toptal.com/developers/gitignore/api/lua
 .buildcache
+.direnv
+.pre-commit-config.yaml
+.devenv
