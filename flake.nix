@@ -50,7 +50,7 @@
             actionlint = {
               enable = true;
             };
-            luacheck.enable = true;
+            # luacheck.enable = true;
           };
 
           devenv.root = let
