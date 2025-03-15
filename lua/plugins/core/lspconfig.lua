@@ -137,6 +137,7 @@ return {
         -- NOTE: Python
         "black",
         "pyright",
+        "pylint",
         "isort",
 
         -- NOTE: Java
