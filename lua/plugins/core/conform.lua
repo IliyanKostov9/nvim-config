@@ -36,7 +36,7 @@ return {
         css = { "prettierd" },
         html = { "prettierd" },
 
-        python = { "isort", "black" },
+        python = { "ruff", "black", "isort" },
         java = { "google-java-format" },
         nix = { "alejandra" },
         lua = { "stylua" },

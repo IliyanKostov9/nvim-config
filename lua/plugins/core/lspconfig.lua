@@ -138,7 +138,7 @@ return {
         -- NOTE: Python
         "black",
         "mypy",
-        "pylint",
+        "ruff",
         "isort",
 
         -- NOTE: Java

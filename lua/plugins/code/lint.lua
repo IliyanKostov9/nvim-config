@@ -11,7 +11,7 @@ return {
         json = { "jsonlint" },
         yaml = { "yamllint" },
         yml = { "yamllint" },
-        python = { "pylint" },
+        -- python = { "pylint" },
         -- ansible = { "ansible-lint" },
         -- kotlin = { "ktlint" },
         -- javascript = { "eslint_d" },
