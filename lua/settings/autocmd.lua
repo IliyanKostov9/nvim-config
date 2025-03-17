@@ -17,3 +17,28 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     vim.highlight.on_yank()
   end,
 })
+
+-- NOTE: Remove unused Javascipt imports
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+  group = vim.api.nvim_create_augroup("js_imports", { clear = true }),
+  pattern = { "*.jsx", "*.tsx" },
+  callback = function()
+    local params = vim.lsp.util.make_range_params()
+    params.context = { only = { "source.removeUnused.ts" }, diagnostics = {} }
+    local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, 500)
+
+    if result then
+      for _, res in pairs(result) do
+        if res.result then
+          for _, action in pairs(res.result) do
+            if action.edit then
+              vim.lsp.util.apply_workspace_edit(action.edit, "utf-16")
+            elseif action.command then
+              vim.lsp.buf.execute_command(action)
+            end
+          end
+        end
+      end
+    end
+  end,
+})
