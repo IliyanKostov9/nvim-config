@@ -7,6 +7,8 @@ return {
       icons = true,
       status = true,
     },
+    event = { "BufReadPost", "BufNewFile" },
+    cmd = "Grapple",
     keys = {
       { "<leader>a", "<cmd>Grapple toggle<cr>", desc = "Tag a file" },
       { "<leader>r", "<cmd>Grapple untag<cr>", desc = "Untag a file" },
@@ -37,6 +39,13 @@ return {
           inactive = " %s ",
           include_icon = true,
         },
+        -- NOTE: Custom function to avoid the exception error when trying to switch to the same hook, in which buffer is not saved yet
+        command = function(path)
+          pcall(function()
+            vim.cmd("badd " .. vim.fn.fnameescape(path))
+            vim.cmd("buffer " .. vim.fn.fnameescape(path))
+          end)
+        end,
       }
       require("telescope").load_extension("grapple")
       grapple.statusline()
