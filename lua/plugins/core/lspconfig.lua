@@ -104,95 +104,103 @@ return {
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
-        yamlls = {},
-        basedpyright = {},
-        -- jdtls = {},
+       --  yamlls = {},
+       --  basedpyright = {},
+       -- dockerls = {},
+       --  rnix = {},
+       -- ruff = {},
+       --  ts_ls = {},
         lua_ls = {
-          -- cmd = {...},
-          -- filetypes = { ...},
-          -- capabilities = {},
+          cmd = {"lua-language-server"},
+          filetypes = { "lua"},
+          capabilities = {},
           settings = {
             Lua = {
               completion = {
                 callSnippet = "Replace",
               },
-              -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-              -- diagnostics = { disable = { 'missing-fields' } },
+              diagnostics = { disable = { "missing-fields" } },
             },
           },
         },
       }
-      require("mason").setup()
+      -- require("mason").setup()
       local ensure_installed = vim.tbl_keys(servers or {})
-      vim.list_extend(ensure_installed, {
-
-        -- NOTE: Ansible
-        -- "ansible-language-server",
-        -- "ansible-lint",
-
-        -- NOTE: Terraform
-        -- "terraform-ls",
-        -- "tflint",
-
-        -- NOTE: Python
-        "black",
-        "mypy",
-        "ruff",
-        "isort",
-
-        -- NOTE: Java
-        "google-java-format",
-
-        -- NOTE: Kotlin
-        -- "kotlin-debug-adapter",
-        -- "kotlin-language-server",
-        -- "ktfmt",
-
-        -- NOTE:C#
-        -- "csharp-language-server",
-        -- "csharpier",
-
-        -- NOTE: Lua
-        "stylua",
-
-        -- NOTE: Nix
-        -- NOTE: Requires prior to  use `rustup default stable`
-        "alejandra",
-        "rnix-lsp",
-
-        -- NOTE: Docker
-        "dockerfile-language-server",
-
-        -- NOTE: JavaScript
-        "typescript-language-server",
-        -- "eslint_d",
-
-        -- NOTE: Bash
-        -- "bash-language-server",
-        -- "beautysh",
-
-        -- NOTE: Utils
-        "editorconfig-checker",
-        "prettierd",
-        "yamllint",
-        "jsonlint",
-      })
-
-      require("mason-tool-installer").setup { ensure_installed = ensure_installed }
-      require("mason-lspconfig").setup {
-        -- ensure_installed = { "ltex" },
-        handlers = {
-          function(server_name)
-            local server = servers[server_name] or {}
-
-            -- This handles overriding only values explicitly passed
-            -- by the server configuration above. Useful when disabling
-            -- certain features of an LSP (for example, turning off formatting for tsserver)
-            server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-            require("lspconfig")[server_name].setup(server)
-          end,
-        },
+      -- vim.list_extend(ensure_installed, {
+      --
+      --   -- NOTE: Ansible
+      --   -- "ansible-language-server",
+      --   -- "ansible-lint",
+      --
+      --   -- NOTE: Terraform
+      --   -- "terraform-ls",
+      --   -- "tflint",
+      --
+      --   -- NOTE: Python
+      --   "black",
+      --   "mypy",
+      --   "isort",
+      --
+      --   -- NOTE: Java
+      --   "google-java-format",
+      --
+      --   -- NOTE: Kotlin
+      --   -- "kotlin-debug-adapter",
+      --   -- "kotlin-language-server",
+      --   -- "ktfmt",
+      --
+      --   -- NOTE:C#
+      --   -- "csharp-language-server",
+      --   -- "csharpier",
+      --
+      --   -- NOTE: Lua
+      --   "stylua",
+      --
+      --   -- NOTE: Nix
+      --   -- NOTE: Requires prior to  use `rustup default stable`
+      --   "alejandra",
+      --
+      --   -- NOTE: JavaScript
+      --   -- "eslint_d",
+      --
+      --   -- NOTE: Bash
+      --   -- "bash-language-server",
+      --   -- "beautysh",
+      --
+      --   -- NOTE: Utils
+      --   "editorconfig-checker",
+      --   "prettierd",
+      --   "yamllint",
+      --   "jsonlint",
+      -- })
+      
+          require('mason-lspconfig').setup {
+        automatic_enable = vim.tbl_keys(servers or {}),
       }
+      require("mason-tool-installer").setup { ensure_installed = ensure_installed }
+      -- require("mason-lspconfig").setup {
+      --   ensure_installed = {}, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
+      --   automatic_installation = true,
+      --   automatic_enable = false,
+      --   handlers = {
+      --     function(server_name)
+      --       local server = servers[server_name] or {}
+      --
+      --       -- This handles overriding only values explicitly passed
+      --       -- by the server configuration above. Useful when disabling
+      --       -- certain features of an LSP (for example, turning off formatting for tsserver)
+      --       server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
+      --       require("lspconfig")[server_name].setup(server)
+      --     end,
+      --   },
+      -- }
+      -- Installed LSPs are configured and enabled automatically with mason-lspconfig
+      -- The loop below is for overriding the default configuration of LSPs with the ones in the servers table
+      for server_name, config in pairs(servers) do
+        if not config then
+        vim.lsp.config(server_name, config)
+        end
+    end
       vim.lsp.set_log_level("WARN")
     end,
   },
