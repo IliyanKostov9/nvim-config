@@ -20,22 +20,24 @@ return {
         },
       },
       -- TODO: Requires fuzzy cargo dep
-      -- {
-      --   "saghen/blink.cmp",
-      --   dependencies = "rafamadriz/friendly-snippets",
-      --   opts = {
-      --     sources = {
-      --       default = { "lazydev", "lsp", "path", "snippets", "buffer" },
-      --       providers = {
-      --         lazydev = {
-      --           name = "LazyDev",
-      --           module = "lazydev.integrations.blink",
-      --           score_offset = 100,
-      --         },
-      --       },
-      --     },
-      -- },
-      -- },
+      -- use:'cd /home/user/.local/share/nvim/lazy/blink.cmp`
+      -- `nix run .#build-plugin`
+      {
+        "saghen/blink.cmp",
+        dependencies = "rafamadriz/friendly-snippets",
+        opts = {
+          sources = {
+            default = { "lazydev", "lsp", "path", "snippets", "buffer" },
+            providers = {
+              lazydev = {
+                name = "LazyDev",
+                module = "lazydev.integrations.blink",
+                score_offset = 100,
+              },
+            },
+          },
+        },
+      },
     },
     config = function()
       --  This function gets run when an LSP attaches to a particular buffer.
