@@ -100,6 +100,8 @@ return {
       local servers = {
         yamlls = {},
         basedpyright = {},
+        dockerls = {},
+        ts_ls = {},
         lua_ls = {
           settings = {
             Lua = {
@@ -149,13 +151,6 @@ return {
         "alejandra",
         "rnix-lsp",
 
-        -- NOTE: Docker
-        "dockerfile-language-server",
-
-        -- NOTE: JavaScript
-        "typescript-language-server",
-        -- "eslint_d",
-
         -- NOTE: Bash
         -- "bash-language-server",
         -- "beautysh",
@@ -168,16 +163,32 @@ return {
       })
 
       require("mason-lspconfig").setup {
-        automatic_enable = vim.tbl_keys(servers or {}),
+        ensure_installed = {},
+        automatic_installation = false,
+        handlers = {
+          function(server_name)
+            local server = servers[server_name] or {}
+            -- This handles overriding only values explicitly passed
+            -- by the server configuration above. Useful when disabling
+            -- certain features of an LSP (for example, turning off formatting for ts_ls)
+            server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
+            require("lspconfig")[server_name].setup(server)
+          end,
+        },
       }
-      require("mason-tool-installer").setup { ensure_installed = ensure_installed }
-      -- Installed LSPs are configured and enabled automatically with mason-lspconfig
-      -- The loop below is for overriding the default configuration of LSPs with the ones in the servers table
-      for server_name, config in pairs(servers) do
-        if not config then
-          vim.lsp.config(server_name, config)
-        end
-      end
+
+      -- BUG: ts_server is not working: https://github.com/nvim-lua/kickstart.nvim/pull/1475
+      ---@type MasonLspconfigSettings
+      ---@diagnostic disable-next-line: missing-fields
+      --   require("mason-lspconfig").setup {
+      --     automatic_enable = vim.tbl_keys(servers or {}),
+      --   }
+      --   require("mason-tool-installer").setup { ensure_installed = ensure_installed }
+      --   -- Installed LSPs are configured and enabled automatically with mason-lspconfig
+      --   -- The loop below is for overriding the default configuration of LSPs with the ones in the servers table
+      --   for server_name, config in pairs(servers) do
+      --     vim.lsp.config(server_name, config)
+      --   end
       vim.lsp.set_log_level("WARN")
     end,
   },
