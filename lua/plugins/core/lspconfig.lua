@@ -20,8 +20,8 @@ return {
         },
       },
       -- TODO: Requires fuzzy cargo dep
-      -- use:'cd /home/user/.local/share/nvim/lazy/blink.cmp`
-      -- `nix run .#build-plugin`
+      -- cd /home/$(whoami)/.local/share/nvim/lazy/blink.cmp
+      -- nix run .#build-plugin
       {
         "saghen/blink.cmp",
         dependencies = "rafamadriz/friendly-snippets",
