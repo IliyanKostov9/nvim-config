@@ -2,8 +2,9 @@ return {
   {
     "neovim/nvim-lspconfig",
     dependencies = {
-      { "williamboman/mason.nvim", config = true }, -- NOTE: Must be loaded before dependants
-      "williamboman/mason-lspconfig.nvim",
+      -- BUG: mason is set to 1.0.0 because nvim.java cannot work with versino 2 as of 20.06
+      { "williamboman/mason.nvim", config = true, version = "^1.0.0" }, -- NOTE: Must be loaded before dependants
+      { "williamboman/mason-lspconfig.nvim", version = "^1.0.0" },
       "WhoIsSethDaniel/mason-tool-installer.nvim",
       { "j-hui/fidget.nvim", opts = {} },
       { "j-hui/fidget.nvim", opts = {} },
@@ -20,7 +21,7 @@ return {
         },
       },
       -- TODO: Requires fuzzy cargo dep
-      -- use:'cd /home/user/.local/share/nvim/lazy/blink.cmp`
+      -- use:'cd /home/$(whoami)/.local/share/nvim/lazy/blink.cmp`
       -- `nix run .#build-plugin`
       {
         "saghen/blink.cmp",
@@ -178,17 +179,17 @@ return {
       }
 
       -- BUG: ts_server is not working: https://github.com/nvim-lua/kickstart.nvim/pull/1475
-      ---@type MasonLspconfigSettings
-      ---@diagnostic disable-next-line: missing-fields
-      --   require("mason-lspconfig").setup {
-      --     automatic_enable = vim.tbl_keys(servers or {}),
-      --   }
-      --   require("mason-tool-installer").setup { ensure_installed = ensure_installed }
-      --   -- Installed LSPs are configured and enabled automatically with mason-lspconfig
-      --   -- The loop below is for overriding the default configuration of LSPs with the ones in the servers table
-      --   for server_name, config in pairs(servers) do
-      --     vim.lsp.config(server_name, config)
-      --   end
+      -- @type MasonLspconfigSettings
+      -- @diagnostic disable-next-line: missing-fields
+      -- require("mason-lspconfig").setup {
+      --   automatic_enable = vim.tbl_keys(servers or {}),
+      -- }
+      -- require("mason-tool-installer").setup { ensure_installed = ensure_installed }
+      -- -- Installed LSPs are configured and enabled automatically with mason-lspconfig
+      -- -- The loop below is for overriding the default configuration of LSPs with the ones in the servers table
+      -- for server_name, config in pairs(servers) do
+      --   vim.lsp.config(server_name, config)
+      -- end
       vim.lsp.set_log_level("WARN")
     end,
   },
