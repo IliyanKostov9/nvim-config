@@ -22,10 +22,10 @@ vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagn
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" })
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 
-vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
-vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
-vim.keymap.set("n", "<C-j>", "<C---[[ w><C-j>", { desc = "Move focus to the lower window" })
-vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
+vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Move focus to the left window" })
+vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move focus to the right window" })
+vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Move focus to the lower window" })
+vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Move focus to the upper window" })
 
 vim.keymap.set("i", "jk", funcs.better_escape_vim, { desc = "Better escape vim jk", noremap = true, silent = true })
 vim.keymap.set("i", "jj", funcs.better_escape_vim, { desc = "Better escape vim jj", noremap = true, silent = true })

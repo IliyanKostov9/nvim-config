@@ -13,7 +13,7 @@ return {
       {
         "<leader>a",
         -- NOTE: Fix for tagging netrw dir trees
-        function(path)
+        function()
           local buffer_error = pcall(function()
             vim.cmd("Grapple toggle")
           end)
