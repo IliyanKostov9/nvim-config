@@ -10,7 +10,20 @@ return {
     event = { "BufReadPost", "BufNewFile" },
     cmd = "Grapple",
     keys = {
-      { "<leader>a", "<cmd>Grapple toggle<cr>", desc = "Tag a file" },
+      {
+        "<leader>a",
+        -- NOTE: Fix for tagging netrw dir trees
+        function(path)
+          local buffer_error = pcall(function()
+            vim.cmd("Grapple toggle")
+          end)
+
+          if not buffer_error then
+            vim.cmd("Grapple toggle path=.")
+          end
+        end,
+        desc = "Tag a file",
+      },
       { "<leader>r", "<cmd>Grapple untag<cr>", desc = "Untag a file" },
       { "<leader>l", "<cmd>Telescope grapple tags<cr>", desc = "Toggle telescope tags menu" },
       -- BUG: Cursor doesn't auto-focus the window
@@ -40,12 +53,9 @@ return {
           inactive = " %s ",
           include_icon = true,
         },
-        -- NOTE: Custom function to avoid the exception error when trying to switch to the same hook, in which buffer is not saved yet
         command = function(path)
-          pcall(function()
-            vim.cmd("badd " .. vim.fn.fnameescape(path))
-            vim.cmd("buffer " .. vim.fn.fnameescape(path))
-          end)
+          vim.cmd("badd " .. vim.fn.fnameescape(path))
+          vim.cmd("buffer " .. vim.fn.fnameescape(path))
         end,
       }
       require("telescope").load_extension("grapple")
