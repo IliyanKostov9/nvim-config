@@ -2,9 +2,8 @@ return {
   {
     "neovim/nvim-lspconfig",
     dependencies = {
-      -- BUG: mason is set to 1.0.0 because nvim.java cannot work with versino 2 as of 20.06
-      { "williamboman/mason.nvim", config = true, version = "^1.0.0" }, -- NOTE: Must be loaded before dependants
-      { "williamboman/mason-lspconfig.nvim", version = "^1.0.0" },
+      { "williamboman/mason.nvim", config = true }, -- NOTE: Must be loaded before dependants
+      { "williamboman/mason-lspconfig.nvim" },
       "WhoIsSethDaniel/mason-tool-installer.nvim",
       { "j-hui/fidget.nvim", opts = {} },
       { "j-hui/fidget.nvim", opts = {} },
