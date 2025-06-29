@@ -8,7 +8,7 @@ return {
       },
       jdk = {
         -- NOTE: keep it disabled, due to avoid receiving The type java.lang.Object cannot be resolved
-        auto_install = false,
+        auto_install = true,
       },
       spring_boot_tools = {
         enable = false,

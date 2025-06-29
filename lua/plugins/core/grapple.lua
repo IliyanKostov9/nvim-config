@@ -25,9 +25,8 @@ return {
         desc = "Tag a file",
       },
       { "<leader>r", "<cmd>Grapple untag<cr>", desc = "Untag a file" },
-      { "<leader>l", "<cmd>Telescope grapple tags<cr>", desc = "Toggle telescope tags menu" },
-      -- BUG: Cursor doesn't auto-focus the window
-      -- { "<leader>tl", "<cmd>Telescope grapple tags<cr>", desc = "Telescope toggle tags menu" },
+      { "<leader>l", "<cmd>Grapple open_tags<cr>", desc = "Toggle telescope tags menu" },
+      { "<leader>tl", "<cmd>Telescope grapple tags<cr>", desc = "Telescope toggle tags menu" },
       { "<leader>1", "<cmd>Grapple select index=1<cr>", desc = "Select first tag" },
       { "<leader>2", "<cmd>Grapple select index=2<cr>", desc = "Select second tag" },
       { "<leader>3", "<cmd>Grapple select index=3<cr>", desc = "Select third tag" },
@@ -53,9 +52,12 @@ return {
           inactive = " %s ",
           include_icon = true,
         },
+        -- NOTE: Custom function to avoid the exception error when trying to switch to the same hook, in which buffer is not saved yet
         command = function(path)
-          vim.cmd("badd " .. vim.fn.fnameescape(path))
-          vim.cmd("buffer " .. vim.fn.fnameescape(path))
+          pcall(function()
+            vim.cmd("badd " .. vim.fn.fnameescape(path))
+            vim.cmd("buffer " .. vim.fn.fnameescape(path))
+          end)
         end,
       }
       require("telescope").load_extension("grapple")
