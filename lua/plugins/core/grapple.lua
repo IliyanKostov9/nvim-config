@@ -52,9 +52,12 @@ return {
           inactive = " %s ",
           include_icon = true,
         },
+        -- NOTE: Custom function to avoid the exception error when trying to switch to the same hook, in which buffer is not saved yet
         command = function(path)
-          vim.cmd("badd " .. vim.fn.fnameescape(path))
-          vim.cmd("buffer " .. vim.fn.fnameescape(path))
+          pcall(function()
+            vim.cmd("badd " .. vim.fn.fnameescape(path))
+            vim.cmd("buffer " .. vim.fn.fnameescape(path))
+          end)
         end,
       }
       require("telescope").load_extension("grapple")
