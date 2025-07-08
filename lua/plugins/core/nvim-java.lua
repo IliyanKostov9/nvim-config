@@ -40,7 +40,7 @@ return {
       end
     end
 
-    -- fixDeadlockGradleIssue()
+    fixDeadlockGradleIssue()
     require("lspconfig").jdtls.setup {}
   end,
   dependencies = {
