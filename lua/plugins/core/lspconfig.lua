@@ -3,7 +3,11 @@ return {
     "neovim/nvim-lspconfig",
     dependencies = {
       -- NOTE: nvim-java is incomptabile with mason version 2: https://github.com/nvim-java/nvim-java/issues/384
-      { "williamboman/mason.nvim", config = true, version = "^1.0.0" }, -- NOTE: Must be loaded before dependants
+      {
+        "williamboman/mason.nvim",
+        config = true,
+        -- version = "^1.0.0"
+      }, -- NOTE: Must be loaded before dependants
       { "williamboman/mason-lspconfig.nvim", version = "^1.0.0" },
       "WhoIsSethDaniel/mason-tool-installer.nvim",
       { "j-hui/fidget.nvim", opts = {} },
@@ -103,6 +107,7 @@ return {
         basedpyright = {},
         dockerls = {},
         ts_ls = {},
+        ["django-template-lsp"] = {},
         lua_ls = {
           settings = {
             Lua = {

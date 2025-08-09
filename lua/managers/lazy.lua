@@ -11,7 +11,7 @@ modules.options.code.lint = true
 modules.options.code.debug = true
 
 modules.options.core.telescope = true
-modules.options.core["nvim-java"] = true
+modules.options.core["nvim-java"] = false
 modules.options.core.lspconfig = true
 modules.options.core.conform = true
 modules.options.core.grapple = true

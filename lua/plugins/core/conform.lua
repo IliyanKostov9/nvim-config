@@ -36,7 +36,8 @@ return {
         css = { "prettierd" },
         scss = { "prettierd" },
         html = { "prettierd" },
-        -- htmldjango = { "prettierd" },
+        svg = { "prettierd" },
+        htmldjango = { "prettierd" },
 
         python = { "ruff", "black", "isort" },
         java = { "google-java-format" },
