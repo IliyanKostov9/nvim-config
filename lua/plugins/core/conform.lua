@@ -1,5 +1,5 @@
 return {
-  { -- Autoformat
+  {
     "stevearc/conform.nvim",
     lazy = false,
     keys = {
@@ -14,10 +14,13 @@ return {
     },
     opts = {
       notify_on_error = false,
+      formatters = {
+        -- NOTE: Commented because ruff_fix and ruff_format does that
+        -- ruff = {
+        --   command = "ruff format",
+        -- },
+      },
       format_on_save = function(bufnr)
-        -- Disable "format_on_save lsp_fallback" for languages that don't
-        -- have a well standardized coding style. You can add additional
-        -- languages here or re-enable it for the disabled ones.
         local disable_filetypes = { c = true, cpp = true }
         return {
           timeout_ms = 500,
@@ -37,9 +40,14 @@ return {
         scss = { "prettierd" },
         html = { "prettierd" },
         svg = { "prettierd" },
-        htmldjango = { "prettierd" },
 
-        python = { "ruff", "black", "isort" },
+        -- htmldjango = { "prettierd" },
+        python = {
+          "ruff_fix",
+          "ruff_format",
+          "isort",
+        },
+
         java = { "google-java-format" },
         nix = { "alejandra" },
         lua = { "stylua" },
