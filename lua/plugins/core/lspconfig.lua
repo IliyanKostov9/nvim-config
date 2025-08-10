@@ -6,9 +6,13 @@ return {
       {
         "williamboman/mason.nvim",
         config = true,
+        opts = {},
         -- version = "^1.0.0"
       }, -- NOTE: Must be loaded before dependants
-      { "williamboman/mason-lspconfig.nvim", version = "^1.0.0" },
+      {
+        "williamboman/mason-lspconfig.nvim",
+        --version = "^1.0.0"
+      },
       "WhoIsSethDaniel/mason-tool-installer.nvim",
       { "j-hui/fidget.nvim", opts = {} },
       { "j-hui/fidget.nvim", opts = {} },
@@ -122,7 +126,6 @@ return {
 
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
-
         -- NOTE: Ansible
         -- "ansible-language-server",
         -- "ansible-lint",
@@ -132,8 +135,6 @@ return {
         -- "tflint",
 
         -- NOTE: Python
-        "black",
-        "mypy",
         "ruff",
         "isort",
 
@@ -145,7 +146,7 @@ return {
         -- "kotlin-language-server",
         -- "ktfmt",
 
-        -- NOTE:C#
+        -- NOTE: C#
         -- "csharp-language-server",
         -- "csharpier",
 
@@ -164,37 +165,16 @@ return {
         -- NOTE: Utils
         "editorconfig-checker",
         "prettierd",
-        "yamllint",
         "jsonlint",
       })
 
-      require("mason-lspconfig").setup {
-        ensure_installed = {},
-        automatic_installation = false,
-        handlers = {
-          function(server_name)
-            local server = servers[server_name] or {}
-            -- This handles overriding only values explicitly passed
-            -- by the server configuration above. Useful when disabling
-            -- certain features of an LSP (for example, turning off formatting for ts_ls)
-            server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-            require("lspconfig")[server_name].setup(server)
-          end,
-        },
-      }
+      -- NOTE: PR: https://github.com/nvim-lua/kickstart.nvim/pull/1663
+      for server_name, server_config in pairs(servers) do
+        server_config.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server_config.capabilities or {})
+        require("lspconfig")[server_name].setup(server_config)
+      end
+      require("mason-tool-installer").setup { ensure_installed = ensure_installed }
 
-      -- BUG: ts_server is not working: https://github.com/nvim-lua/kickstart.nvim/pull/1475
-      -- @type MasonLspconfigSettings
-      -- @diagnostic disable-next-line: missing-fields
-      -- require("mason-lspconfig").setup {
-      --   automatic_enable = vim.tbl_keys(servers or {}),
-      -- }
-      -- require("mason-tool-installer").setup { ensure_installed = ensure_installed }
-      -- -- Installed LSPs are configured and enabled automatically with mason-lspconfig
-      -- -- The loop below is for overriding the default configuration of LSPs with the ones in the servers table
-      -- for server_name, config in pairs(servers) do
-      --   vim.lsp.config(server_name, config)
-      -- end
       vim.lsp.set_log_level("WARN")
     end,
   },
