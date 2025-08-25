@@ -107,6 +107,7 @@ return {
       capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
       local servers = {
         yamlls = {},
+        ["bash-language-server"] = {},
         basedpyright = {},
         dockerls = {},
         ts_ls = {},
@@ -165,6 +166,7 @@ return {
         "editorconfig-checker",
         "prettierd",
         "jsonlint",
+        "shellcheck",
       })
 
       -- NOTE: PR: https://github.com/nvim-lua/kickstart.nvim/pull/1663
