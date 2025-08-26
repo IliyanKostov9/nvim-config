@@ -40,6 +40,7 @@ return {
         scss = { "prettierd" },
         html = { "prettierd" },
         svg = { "prettierd" },
+        cpp = { "clang-format" },
 
         -- htmldjango = { "prettierd" },
         python = {

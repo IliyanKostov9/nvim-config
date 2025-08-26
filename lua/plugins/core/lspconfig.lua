@@ -109,6 +109,7 @@ return {
         yamlls = {},
         basedpyright = {},
         dockerls = {},
+        clangd = {},
         ts_ls = {},
         ["django-template-lsp"] = {},
         lua_ls = {
@@ -158,8 +159,12 @@ return {
         "rnix-lsp",
 
         -- NOTE: Bash
-        -- "bash-language-server",
-        -- "beautysh",
+        "bash-language-server",
+        "beautysh",
+
+        -- NOTE: C++
+        "clang-format",
+        "cpplint",
 
         -- NOTE: Utils
         "editorconfig-checker",
