@@ -107,12 +107,10 @@ return {
       capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
       local servers = {
         yamlls = {},
-        ["bash-language-server"] = {},
         basedpyright = {},
         dockerls = {},
         clangd = {},
         ts_ls = {},
-        ["django-template-lsp"] = {},
         lua_ls = {
           settings = {
             Lua = {
@@ -138,6 +136,7 @@ return {
         -- NOTE: Python
         "ruff",
         "isort",
+        "django-template-lsp",
 
         -- NOTE: Java
         "google-java-format",
@@ -150,6 +149,14 @@ return {
         -- NOTE: C#
         -- "csharp-language-server",
         -- "csharpier",
+
+        --NOTE: Bash
+        "bash-language-server",
+
+        --NOTE: Groovy
+        -- REQUIRES: Java to be installed
+        "groovy-language-server",
+        "npm-groovy-lint",
 
         -- NOTE: Lua
         "stylua",
