@@ -46,7 +46,7 @@ return {
         scss = { "prettierd" },
         html = { "prettierd" },
         svg = { "prettierd" },
-        cpp = { "clang-format" },
+        -- cpp = { "clang-format" },
 
         groovy = { "npm-groovy-lint" },
 
@@ -60,7 +60,7 @@ return {
         java = { "google-java-format" },
         nix = { "alejandra" },
         lua = { "stylua" },
-        kotlin = { "prettierd" },
+        kotlin = { "ktfmt" },
         -- cs = { "csharpier" },
         sh = { "beautysh" },
       },

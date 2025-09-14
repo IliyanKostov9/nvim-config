@@ -142,9 +142,9 @@ return {
         "google-java-format",
 
         -- NOTE: Kotlin
-        -- "kotlin-debug-adapter",
-        -- "kotlin-language-server",
-        -- "ktfmt",
+        "kotlin-debug-adapter",
+        "kotlin-language-server",
+        "ktfmt",
 
         -- NOTE: C#
         -- "csharp-language-server",
@@ -171,8 +171,8 @@ return {
         "beautysh",
 
         -- NOTE: C++
-        "clang-format",
-        "cpplint",
+        -- "clang-format",
+        -- "cpplint",
 
         -- NOTE: Utils
         "editorconfig-checker",
