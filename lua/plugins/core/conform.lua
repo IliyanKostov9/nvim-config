@@ -25,6 +25,10 @@ return {
           stdin = false,
           timeout_ms = 8000,
         },
+        ktfmt = {
+          args = { "-" },
+          comand = "ktfmt",
+        },
       },
       format_on_save = function(bufnr)
         local disable_filetypes = { c = true, cpp = true }

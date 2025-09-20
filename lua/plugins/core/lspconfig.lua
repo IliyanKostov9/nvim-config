@@ -109,7 +109,31 @@ return {
         yamlls = {},
         basedpyright = {},
         dockerls = {},
-        clangd = {},
+        -- BUG: Kotlin language server keeps hanging
+        kotlin_language_server = {
+          cmd = { "kotlin-language-server" },
+          root_markers = {
+            "settings.gradle",
+            "settings.gradle.kts",
+            "pom.xml",
+            "build.gradle",
+            "build.gradle.kts",
+            "workspace.json",
+          },
+        },
+        kotlin_lsp = {
+          mason = false,
+          cmd = { "kotlin-lsp", "--stdio" },
+          root_markers = {
+            "settings.gradle",
+            "settings.gradle.kts",
+            "pom.xml",
+            "build.gradle",
+            "build.gradle.kts",
+            "workspace.json",
+          },
+        },
+        -- clangd = {},
         ts_ls = {},
         lua_ls = {
           settings = {
@@ -145,6 +169,7 @@ return {
         "kotlin-debug-adapter",
         "kotlin-language-server",
         "ktfmt",
+        "ktlint",
 
         -- NOTE: C#
         -- "csharp-language-server",
@@ -184,7 +209,8 @@ return {
       -- NOTE: PR: https://github.com/nvim-lua/kickstart.nvim/pull/1663
       for server_name, server_config in pairs(servers) do
         server_config.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server_config.capabilities or {})
-        require("lspconfig")[server_name].setup(server_config)
+        vim.lsp.config(server_name, server_config)
+        vim.lsp.enable(server_name)
       end
       require("mason-tool-installer").setup { ensure_installed = ensure_installed }
 
