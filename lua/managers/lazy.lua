@@ -7,6 +7,7 @@ vim.opt.rtp:prepend(lazypath)
 
 local modules = require("modules.init")
 modules.options.code.autopairs = true
+modules.options.code.flutter = true
 modules.options.code.lint = true
 modules.options.code.debug = true
 

@@ -109,18 +109,6 @@ return {
         yamlls = {},
         basedpyright = {},
         dockerls = {},
-        -- BUG: Kotlin language server keeps hanging
-        kotlin_language_server = {
-          cmd = { "kotlin-language-server" },
-          root_markers = {
-            "settings.gradle",
-            "settings.gradle.kts",
-            "pom.xml",
-            "build.gradle",
-            "build.gradle.kts",
-            "workspace.json",
-          },
-        },
         kotlin_lsp = {
           mason = false,
           cmd = { "kotlin-lsp", "--stdio" },
@@ -167,7 +155,6 @@ return {
 
         -- NOTE: Kotlin
         "kotlin-debug-adapter",
-        "kotlin-language-server",
         "ktfmt",
         "ktlint",
 
