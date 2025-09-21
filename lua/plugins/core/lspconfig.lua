@@ -109,6 +109,7 @@ return {
         yamlls = {},
         basedpyright = {},
         dockerls = {},
+        gopls = {},
         kotlin_lsp = {
           mason = false,
           cmd = { "kotlin-lsp", "--stdio" },
@@ -149,6 +150,10 @@ return {
         "ruff",
         "isort",
         "django-template-lsp",
+
+        -- NOTE: Go
+        "delve",
+        "golines",
 
         -- NOTE: Java
         "google-java-format",

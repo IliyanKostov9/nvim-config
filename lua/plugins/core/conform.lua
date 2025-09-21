@@ -53,6 +53,7 @@ return {
         -- cpp = { "clang-format" },
 
         groovy = { "npm-groovy-lint" },
+        go = { "golines" },
 
         -- htmldjango = { "prettierd" },
         python = {
