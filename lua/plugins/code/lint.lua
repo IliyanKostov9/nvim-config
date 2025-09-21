@@ -17,7 +17,11 @@ return {
         json = { "jsonlint" },
         yaml = { "yamllint" },
         yml = { "yamllint" },
+
         sh = { "shellcheck" },
+        zsh = { "shellcheck" },
+        bash = { "shellcheck" },
+
         groovy = { "npm-groovy-lint" },
         python = { "ruff" },
         -- cpp = { "cpplint" },

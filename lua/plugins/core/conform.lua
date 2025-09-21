@@ -21,8 +21,8 @@ return {
         -- },
         ["npm-groovy-lint"] = {
           command = "npm-groovy-lint",
-          args = { "--format", "$FILENAME" },
-          stdin = false,
+          args = { "--format", "-" },
+          stdin = true,
           timeout_ms = 8000,
         },
         ktfmt = {

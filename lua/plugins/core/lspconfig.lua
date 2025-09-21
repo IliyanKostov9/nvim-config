@@ -108,6 +108,7 @@ return {
       local servers = {
         yamlls = {},
         basedpyright = {},
+        ["groovy-language-server"] = {},
         dockerls = {},
         gopls = {},
         kotlin_lsp = {
@@ -172,7 +173,6 @@ return {
 
         --NOTE: Groovy
         -- REQUIRES: Java to be installed
-        "groovy-language-server",
         "npm-groovy-lint",
 
         -- NOTE: Lua
