@@ -108,9 +108,23 @@ return {
       local servers = {
         yamlls = {},
         basedpyright = {},
+        ["groovy-language-server"] = {},
         dockerls = {},
+        gopls = {},
+        kotlin_lsp = {
+          mason = false,
+          cmd = { "kotlin-lsp", "--stdio" },
+          root_markers = {
+            "settings.gradle",
+            "settings.gradle.kts",
+            "pom.xml",
+            "build.gradle",
+            "build.gradle.kts",
+            "workspace.json",
+          },
+        },
+        -- clangd = {},
         ts_ls = {},
-        ["django-template-lsp"] = {},
         lua_ls = {
           settings = {
             Lua = {
@@ -136,18 +150,30 @@ return {
         -- NOTE: Python
         "ruff",
         "isort",
+        "django-template-lsp",
+
+        -- NOTE: Go
+        "delve",
+        "golines",
 
         -- NOTE: Java
         "google-java-format",
 
         -- NOTE: Kotlin
-        -- "kotlin-debug-adapter",
-        -- "kotlin-language-server",
-        -- "ktfmt",
+        "kotlin-debug-adapter",
+        "ktfmt",
+        "ktlint",
 
         -- NOTE: C#
         -- "csharp-language-server",
         -- "csharpier",
+
+        --NOTE: Bash
+        "bash-language-server",
+
+        --NOTE: Groovy
+        -- REQUIRES: Java to be installed
+        "npm-groovy-lint",
 
         -- NOTE: Lua
         "stylua",
@@ -158,19 +184,25 @@ return {
         "rnix-lsp",
 
         -- NOTE: Bash
-        -- "bash-language-server",
-        -- "beautysh",
+        "bash-language-server",
+        "beautysh",
+
+        -- NOTE: C++
+        -- "clang-format",
+        -- "cpplint",
 
         -- NOTE: Utils
         "editorconfig-checker",
         "prettierd",
         "jsonlint",
+        "shellcheck",
       })
 
       -- NOTE: PR: https://github.com/nvim-lua/kickstart.nvim/pull/1663
       for server_name, server_config in pairs(servers) do
         server_config.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server_config.capabilities or {})
-        require("lspconfig")[server_name].setup(server_config)
+        vim.lsp.config(server_name, server_config)
+        vim.lsp.enable(server_name)
       end
       require("mason-tool-installer").setup { ensure_installed = ensure_installed }
 
