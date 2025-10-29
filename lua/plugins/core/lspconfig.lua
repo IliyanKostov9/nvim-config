@@ -108,8 +108,22 @@ return {
       local servers = {
         yamlls = {},
         basedpyright = {},
+        ["groovy-language-server"] = {},
         dockerls = {},
-        clangd = {},
+        gopls = {},
+        kotlin_lsp = {
+          mason = false,
+          cmd = { "kotlin-lsp", "--stdio" },
+          root_markers = {
+            "settings.gradle",
+            "settings.gradle.kts",
+            "pom.xml",
+            "build.gradle",
+            "build.gradle.kts",
+            "workspace.json",
+          },
+        },
+        -- clangd = {},
         ts_ls = {},
         lua_ls = {
           settings = {
@@ -138,13 +152,17 @@ return {
         "isort",
         "django-template-lsp",
 
+        -- NOTE: Go
+        "delve",
+        "golines",
+
         -- NOTE: Java
         "google-java-format",
 
         -- NOTE: Kotlin
-        -- "kotlin-debug-adapter",
-        -- "kotlin-language-server",
-        -- "ktfmt",
+        "kotlin-debug-adapter",
+        "ktfmt",
+        "ktlint",
 
         -- NOTE: C#
         -- "csharp-language-server",
@@ -155,7 +173,6 @@ return {
 
         --NOTE: Groovy
         -- REQUIRES: Java to be installed
-        "groovy-language-server",
         "npm-groovy-lint",
 
         -- NOTE: Lua
@@ -171,8 +188,8 @@ return {
         "beautysh",
 
         -- NOTE: C++
-        "clang-format",
-        "cpplint",
+        -- "clang-format",
+        -- "cpplint",
 
         -- NOTE: Utils
         "editorconfig-checker",
@@ -184,7 +201,8 @@ return {
       -- NOTE: PR: https://github.com/nvim-lua/kickstart.nvim/pull/1663
       for server_name, server_config in pairs(servers) do
         server_config.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server_config.capabilities or {})
-        require("lspconfig")[server_name].setup(server_config)
+        vim.lsp.config(server_name, server_config)
+        vim.lsp.enable(server_name)
       end
       require("mason-tool-installer").setup { ensure_installed = ensure_installed }
 

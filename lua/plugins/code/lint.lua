@@ -9,7 +9,7 @@ return {
         -- terraform = { "tflint" },
         -- dockerfile = { "hadolint" },
         -- ansible = { "ansible-lint" },
-        -- kotlin = { "ktlint" },
+        kotlin = { "ktlint" },
         -- javascript = { "eslint_d" },
         -- typescript = { "eslint_d" },
         -- javascriptreact = { "eslint_d" },
@@ -17,10 +17,14 @@ return {
         json = { "jsonlint" },
         yaml = { "yamllint" },
         yml = { "yamllint" },
+
         sh = { "shellcheck" },
+        zsh = { "shellcheck" },
+        bash = { "shellcheck" },
+
         groovy = { "npm-groovy-lint" },
         python = { "ruff" },
-        cpp = { "cpplint" },
+        -- cpp = { "cpplint" },
       }
       -- You can disable the default linters by setting their filetypes to nil:
       -- lint.linters_by_ft['json'] = nil
