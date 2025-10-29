@@ -19,6 +19,16 @@ return {
         -- ruff = {
         --   command = "ruff format",
         -- },
+        ["npm-groovy-lint"] = {
+          command = "npm-groovy-lint",
+          args = { "--format", "-" },
+          stdin = true,
+          timeout_ms = 8000,
+        },
+        ktfmt = {
+          args = { "-" },
+          comand = "ktfmt",
+        },
       },
       format_on_save = function(bufnr)
         local disable_filetypes = { c = true, cpp = true }
@@ -40,6 +50,10 @@ return {
         scss = { "prettierd" },
         html = { "prettierd" },
         svg = { "prettierd" },
+        -- cpp = { "clang-format" },
+
+        groovy = { "npm-groovy-lint" },
+        go = { "golines" },
 
         -- htmldjango = { "prettierd" },
         python = {
@@ -51,9 +65,9 @@ return {
         java = { "google-java-format" },
         nix = { "alejandra" },
         lua = { "stylua" },
-        kotlin = { "prettierd" },
+        kotlin = { "ktfmt" },
         -- cs = { "csharpier" },
-        -- sh = { "beautysh" },
+        sh = { "beautysh" },
       },
       fallback_formatter = "prettierd",
     },

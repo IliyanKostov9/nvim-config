@@ -11,6 +11,7 @@ M.options = {
     otter = false,
     jupyter = false,
     autopairs = false,
+    flutter = false,
     lint = false,
     debug = false,
   },

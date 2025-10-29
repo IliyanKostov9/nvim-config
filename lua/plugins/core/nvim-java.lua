@@ -41,7 +41,7 @@ return {
     end
 
     fixDeadlockGradleIssue()
-    require("lspconfig").jdtls.setup {}
+    vim.lsp.config(jdtls)
   end,
   dependencies = {
     "nvim-java/lua-async-await",
