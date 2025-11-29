@@ -111,18 +111,18 @@ return {
         ["groovy-language-server"] = {},
         dockerls = {},
         gopls = {},
-        kotlin_lsp = {
-          mason = false,
-          cmd = { "kotlin-lsp", "--stdio" },
-          root_markers = {
-            "settings.gradle",
-            "settings.gradle.kts",
-            "pom.xml",
-            "build.gradle",
-            "build.gradle.kts",
-            "workspace.json",
-          },
-        },
+        -- kotlin_lsp = {
+        --   mason = false,
+        --   cmd = { "kotlin-lsp", "--stdio" },
+        --   root_markers = {
+        --     "settings.gradle",
+        --     "settings.gradle.kts",
+        --     "pom.xml",
+        --     "build.gradle",
+        --     "build.gradle.kts",
+        --     "workspace.json",
+        --   },
+        -- },
         -- clangd = {},
         ts_ls = {},
         lua_ls = {
