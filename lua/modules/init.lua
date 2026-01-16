@@ -43,8 +43,8 @@ M.options = {
     ["better-escape"] = false,
     undotree = false,
     Comment = false,
+    vimtex = true,
     ["markdown-preview"] = false,
-    ["ltex-ls"] = false,
   },
 
   themes = {
