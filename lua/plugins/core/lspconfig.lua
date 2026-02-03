@@ -109,7 +109,7 @@ return {
         texlab = {},
         yamlls = {},
         basedpyright = {},
-        ["groovy-language-server"] = {},
+        groovyls = { cmd = { "groovy-language-server" } },
         dockerls = {},
         gopls = {},
         -- kotlin_lsp = {
