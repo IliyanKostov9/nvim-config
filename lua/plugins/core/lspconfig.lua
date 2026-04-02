@@ -109,7 +109,7 @@ return {
         texlab = {},
         yamlls = {},
         basedpyright = {},
-        groovyls = { cmd = { "groovy-language-server" } },
+        -- groovyls = { cmd = { "groovy-language-server" } },
         dockerls = {},
         gopls = {},
         -- kotlin_lsp = {
@@ -174,7 +174,7 @@ return {
 
         --NOTE: Groovy
         -- REQUIRES: Java to be installed
-        "npm-groovy-lint",
+        -- "npm-groovy-lint",
 
         -- NOTE: Lua
         "stylua",

@@ -52,7 +52,7 @@ return {
         svg = { "prettierd" },
         -- cpp = { "clang-format" },
 
-        groovy = { "npm-groovy-lint" },
+        -- groovy = { "npm-groovy-lint" },
         go = { "golines" },
 
         -- htmldjango = { "prettierd" },
