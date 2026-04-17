@@ -5,8 +5,8 @@ return {
     config = function()
       local lint = require("lint")
       lint.linters_by_ft = {
+        terraform = { "tflint" },
         -- markdown = { "markdownlint" },
-        -- terraform = { "tflint" },
         -- dockerfile = { "hadolint" },
         -- ansible = { "ansible-lint" },
         kotlin = { "ktlint" },
