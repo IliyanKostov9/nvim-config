@@ -7,7 +7,6 @@ return {
         "williamboman/mason.nvim",
         config = true,
         opts = {},
-        -- version = "^1.0.0"
       }, -- NOTE: Must be loaded before dependants
       {
         "williamboman/mason-lspconfig.nvim",
@@ -19,10 +18,7 @@ return {
       {
         "folke/lazydev.nvim",
         opts = {
-          -- saghen/blink.cmp
           library = {
-            -- See the configuration section for more details
-            -- Load luvit types when the `vim.uv` word is found
             "LazyVim",
             { path = "${3rd}/luv/library", words = { "vim%.uv" } },
           },
@@ -48,10 +44,6 @@ return {
       },
     },
     config = function()
-      --  This function gets run when an LSP attaches to a particular buffer.
-      --    That is to say, every time a new file is opened that is associated with
-      --    an lsp (for example, opening `main.rs` is associated with `rust_analyzer`) this
-      --    function will be executed to configure the current buffer
       vim.api.nvim_create_autocmd("LspAttach", {
         group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
         callback = function(event)
@@ -69,7 +61,6 @@ return {
           map("K", vim.lsp.buf.hover, "Hover Documentation")
           map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 
-          -- When you move your cursor, the highlights will be cleared
           local client = vim.lsp.get_client_by_id(event.data.client_id)
           if client and client.server_capabilities.documentHighlightProvider then
             local highlight_augroup = vim.api.nvim_create_augroup("kickstart-lsp-highlight", { clear = false })

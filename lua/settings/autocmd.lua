@@ -42,3 +42,11 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
     end
   end,
 })
+
+-- NOTE: Fix for terraform when creating a new *.tf file to wake nvim-treesitter
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = { "*.tf", "*.tfvars" },
+  callback = function()
+    vim.bo.filetype = "terraform"
+  end,
+})
