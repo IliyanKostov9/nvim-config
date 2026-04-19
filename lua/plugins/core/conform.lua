@@ -19,16 +19,16 @@ return {
         -- ruff = {
         --   command = "ruff format",
         -- },
-        ["npm-groovy-lint"] = {
-          command = "npm-groovy-lint",
-          args = { "--format", "-" },
-          stdin = true,
-          timeout_ms = 8000,
-        },
-        ktfmt = {
-          args = { "-" },
-          comand = "ktfmt",
-        },
+        -- ["npm-groovy-lint"] = {
+        --   command = "npm-groovy-lint",
+        --   args = { "--format", "-" },
+        --   stdin = true,
+        --   timeout_ms = 8000,
+        -- },
+        --   ktfmt = {
+        --     args = { "-" },
+        --     comand = "ktfmt",
+        --   },
       },
       format_on_save = function(bufnr)
         local disable_filetypes = { c = true, cpp = true }
@@ -51,7 +51,6 @@ return {
         html = { "prettierd" },
         svg = { "prettierd" },
         -- cpp = { "clang-format" },
-
         -- groovy = { "npm-groovy-lint" },
         go = { "golines" },
 
@@ -68,6 +67,7 @@ return {
         kotlin = { "ktfmt" },
         -- cs = { "csharpier" },
         sh = { "beautysh" },
+        terraform = { "terraform_fmt" },
       },
       fallback_formatter = "prettierd",
     },

@@ -145,7 +145,6 @@ return {
         -- "ansible-lint",
 
         -- NOTE: Terraform
-        "terraform-ls",
         "tflint",
 
         -- NOTE: Python

@@ -6,10 +6,10 @@ return {
       local lint = require("lint")
       lint.linters_by_ft = {
         terraform = { "tflint" },
+        -- kt = { "ktlint" },
         -- markdown = { "markdownlint" },
         -- dockerfile = { "hadolint" },
         -- ansible = { "ansible-lint" },
-        kotlin = { "ktlint" },
         -- javascript = { "eslint_d" },
         -- typescript = { "eslint_d" },
         -- javascriptreact = { "eslint_d" },
