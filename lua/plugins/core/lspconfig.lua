@@ -151,9 +151,9 @@ return {
         "google-java-format",
 
         -- NOTE: Kotlin
-        "kotlin-debug-adapter",
-        "ktfmt",
-        "ktlint",
+        -- "kotlin-debug-adapter",
+        -- "ktfmt",
+        -- "ktlint",
 
         -- NOTE: C#
         -- "csharp-language-server",
