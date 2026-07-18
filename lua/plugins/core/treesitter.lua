@@ -2,8 +2,8 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
+    branch = "main",
     config = function()
-      require("nvim-treesitter.install").prefer_git = true
       vim.g.nvim_treesitter = {
         ensure_installed = "all",
         auto_install = true,
