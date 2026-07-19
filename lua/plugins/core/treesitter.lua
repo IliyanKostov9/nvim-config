@@ -3,19 +3,31 @@ return {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     branch = "main",
+    -- init = function()
+    --   require("nvim-treesitter").install {
+    --     "python",
+    --     "lua",
+    --     "nix",
+    --     "vim",
+    --     "vimdoc",
+    --   }
+    -- end,
     config = function()
-      vim.g.nvim_treesitter = {
-        ensure_installed = "all",
-        auto_install = true,
-      }
-
       vim.api.nvim_create_autocmd("FileType", {
         callback = function(args)
           local lang = vim.treesitter.language.get_lang(args.match)
+          local skip_langs = { "tex", "latex", "netrw", "fidget" }
 
-          if lang and lang ~= "tex" and lang ~= "latex" then
-            pcall(vim.treesitter.start)
+          if not lang or vim.tbl_contains(skip_langs, lang) then
+            return
           end
+
+          -- Auto-install the parser if it's not already installed
+          if not vim.tbl_contains(require("nvim-treesitter.config").get_installed(), lang) then
+            require("nvim-treesitter").install({ lang }):wait(30000)
+          end
+
+          pcall(vim.treesitter.start)
         end,
       })
 
