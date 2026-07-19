@@ -16,7 +16,7 @@ return {
       vim.api.nvim_create_autocmd("FileType", {
         callback = function(args)
           local lang = vim.treesitter.language.get_lang(args.match)
-          local skip_langs = { "tex", "latex", "netrw", "fidget" }
+          local skip_langs = { "tex", "latex", "netrw", "fidget", "grapple", "mason", "lazy" }
 
           if not lang or vim.tbl_contains(skip_langs, lang) then
             return

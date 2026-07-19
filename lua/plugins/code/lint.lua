@@ -26,6 +26,7 @@ return {
         python = { "ruff" },
         -- cpp = { "cpplint" },
       }
+
       -- You can disable the default linters by setting their filetypes to nil:
       -- lint.linters_by_ft['json'] = nil
       local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })

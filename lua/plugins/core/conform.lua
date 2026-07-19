@@ -19,12 +19,12 @@ return {
         -- ruff = {
         --   command = "ruff format",
         -- },
-        -- ["npm-groovy-lint"] = {
-        --   command = "npm-groovy-lint",
-        --   args = { "--format", "-" },
-        --   stdin = true,
-        --   timeout_ms = 8000,
-        -- },
+        ["npm-groovy-lint"] = {
+          command = "npm-groovy-lint",
+          args = { "--format", "-" },
+          stdin = true,
+          timeout_ms = 8000,
+        },
         --   ktfmt = {
         --     args = { "-" },
         --     comand = "ktfmt",
@@ -51,10 +51,10 @@ return {
         html = { "prettierd" },
         svg = { "prettierd" },
         -- cpp = { "clang-format" },
-        -- groovy = { "npm-groovy-lint" },
+        groovy = { "npm-groovy-lint" },
         go = { "golines" },
 
-        -- htmldjango = { "prettierd" },
+        htmldjango = { "djlint" },
         python = {
           "ruff_fix",
           "ruff_format",

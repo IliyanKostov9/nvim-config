@@ -10,7 +10,6 @@ return {
       }, -- NOTE: Must be loaded before dependants
       {
         "williamboman/mason-lspconfig.nvim",
-        --version = "^1.0.0"
       },
       "WhoIsSethDaniel/mason-tool-installer.nvim",
       { "j-hui/fidget.nvim", opts = {} },
@@ -100,7 +99,7 @@ return {
         texlab = {},
         yamlls = {},
         basedpyright = {},
-        -- groovyls = { cmd = { "groovy-language-server" } },
+        groovyls = { cmd = { "groovy-language-server" } },
         dockerls = {},
         gopls = {},
         -- kotlin_lsp = {
@@ -142,6 +141,7 @@ return {
         "ruff",
         "isort",
         "django-template-lsp",
+        "djlint",
 
         -- NOTE: Go
         "delve",
@@ -159,12 +159,10 @@ return {
         -- "csharp-language-server",
         -- "csharpier",
 
-        --NOTE: Bash
-        "bash-language-server",
-
         --NOTE: Groovy
         -- REQUIRES: Java to be installed
-        -- "npm-groovy-lint",
+        "npm-groovy-lint",
+        "groovy-language-server",
 
         -- NOTE: Lua
         "stylua",
