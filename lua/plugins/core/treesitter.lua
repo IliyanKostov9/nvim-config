@@ -3,15 +3,77 @@ return {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     branch = "main",
-    -- init = function()
-    --   require("nvim-treesitter").install {
-    --     "python",
-    --     "lua",
-    --     "nix",
-    --     "vim",
-    --     "vimdoc",
-    --   }
-    -- end,
+    init = function()
+      require("nvim-treesitter").install {
+        -- NOTE: Languages
+        "python",
+        "go",
+        "gomod",
+        "gosum",
+        "gowork",
+        "groovy",
+        "c",
+        "cpp",
+        "kotlin",
+        "java",
+        "javascript",
+        "lua",
+        "luadoc",
+        "sql",
+        "terraform",
+        "nix",
+        "tsx",
+        "typescript",
+
+        -- NOTE: IaC
+        "hcl",
+        "helm",
+
+        -- NOTE: Configuration
+        "json",
+        "json5",
+        "toml",
+        "editorconfig",
+        "xml",
+        "yaml",
+        "requirements",
+
+        -- NOTE: Shells
+        "zsh",
+        "bash",
+
+        -- NOTE: Containers
+        "dockerfile",
+        "make",
+
+        -- NOTE: Documentation
+        "markdown",
+        "markdown_inline",
+
+        -- NOTE: Vim
+        "vim",
+        "vimdoc",
+
+        -- NOTE: Git
+        "git_config",
+        "git_rebase",
+        "gitattributes",
+        "gitcommit",
+        "gitignore",
+        "diff",
+
+        -- NOTE: Markup
+        "html",
+        "css",
+
+        -- NOTE: HTTP
+        "http",
+        "jq",
+        "nginx",
+        "query",
+        "regex",
+      }
+    end,
     config = function()
       vim.api.nvim_create_autocmd("FileType", {
         callback = function(args)
@@ -20,11 +82,6 @@ return {
 
           if not lang or vim.tbl_contains(skip_langs, lang) then
             return
-          end
-
-          -- Auto-install the parser if it's not already installed
-          if not vim.tbl_contains(require("nvim-treesitter.config").get_installed(), lang) then
-            require("nvim-treesitter").install({ lang }):wait(30000)
           end
 
           pcall(vim.treesitter.start)
