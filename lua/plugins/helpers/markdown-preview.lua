@@ -10,11 +10,16 @@ return {
       vim.g.mkdp_echo_preview_url = 1
       vim.g.mkdp_browserfunc = "OpenMarkdownPreview"
 
-      vim.cmd([[
+      local open_cmd = vim.fn.has("macunix") == 1 and "open" or "xdg-open"
+
+      vim.cmd(string.format(
+        [[
       function OpenMarkdownPreview(url)
-        execute "silent !open -a 'Google Chrome' " . shellescape(a:url)
+        call jobstart(['%s',a:url], {'detach': v:true})
       endfunction
-      ]])
+      ]],
+        open_cmd
+      ))
     end,
   },
 }
