@@ -16,9 +16,6 @@ vim.opt.mouse = "a"
 -- Mode
 vim.opt.showmode = true
 
--- Default browser for MarkdownPreview
-vim.g.mkdp_browser = "librewolf"
-
 -- Sync clipboard between OS and Neovim.
 vim.opt.clipboard = "unnamedplus"
 

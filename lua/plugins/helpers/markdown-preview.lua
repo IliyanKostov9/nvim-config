@@ -4,18 +4,22 @@ return {
     "iamcco/markdown-preview.nvim",
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
     ft = { "markdown" },
-    build = function(plugin)
-      if vim.fn.executable("npx") then
-        vim.cmd("!cd " .. plugin.dir .. " && cd app && npx --yes yarn install")
-      else
-        vim.cmd([[Lazy load markdown-preview.nvim]])
-        vim.fn["mkdp#util#install"]()
-      end
-    end,
+    build = "cd app && npm install",
     init = function()
-      if vim.fn.executable("npx") then
-        vim.g.mkdp_filetypes = { "markdown" }
-      end
+      vim.g.mkdp_filetypes = { "markdown" }
+      vim.g.mkdp_echo_preview_url = 1
+      vim.g.mkdp_browserfunc = "OpenMarkdownPreview"
+
+      local open_cmd = vim.fn.has("macunix") == 1 and "open" or "xdg-open"
+
+      vim.cmd(string.format(
+        [[
+      function OpenMarkdownPreview(url)
+        call jobstart(['%s',a:url], {'detach': v:true})
+      endfunction
+      ]],
+        open_cmd
+      ))
     end,
   },
 }
