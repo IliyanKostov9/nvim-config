@@ -25,6 +25,12 @@ return {
           stdin = true,
           timeout_ms = 8000,
         },
+        -- NOTE: Needs gsx installed via: go install github.com/gsxhq/gsx/cmd/gsx@latest
+        gsx_fmt = {
+          command = { "gsx" },
+          args = { "fmt", "$FILENAME" },
+          stdin = false,
+        },
         --   ktfmt = {
         --     args = { "-" },
         --     comand = "ktfmt",
@@ -50,9 +56,10 @@ return {
         scss = { "prettierd" },
         html = { "prettierd" },
         svg = { "prettierd" },
-        -- cpp = { "clang-format" },
         groovy = { "npm-groovy-lint" },
+
         go = { "golines" },
+        gsx = { "gsx_fmt" },
 
         htmldjango = { "djlint" },
         python = {
@@ -65,9 +72,10 @@ return {
         nix = { "alejandra" },
         lua = { "stylua" },
         kotlin = { "ktfmt" },
-        -- cs = { "csharpier" },
         sh = { "beautysh" },
         terraform = { "terraform_fmt" },
+        -- cpp = { "clang-format" },
+        -- cs = { "csharpier" },
       },
       fallback_formatter = "prettierd",
     },
