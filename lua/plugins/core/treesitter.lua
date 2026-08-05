@@ -1,3 +1,26 @@
+local function gsx_build(dir)
+  vim.fn.mkdir(dir .. "/parser", "p")
+  local out = vim.fn.system { "tree-sitter", "build", "-o", dir .. "/parser/gsx.so", dir }
+  if vim.v.shell_error ~= 0 then
+    vim.notify("tree-sitter-gsx: parser build failed:\n" .. out, vim.log.levels.ERROR)
+    return
+  end
+  vim.fn.mkdir(dir .. "/queries/gsx", "p")
+  for _, q in ipairs { "highlights", "injections" } do
+    vim.uv.fs_copyfile(dir .. "/queries/" .. q .. ".scm", dir .. "/queries/gsx/" .. q .. ".scm")
+  end
+end
+
+-- True when the compiled parser is absent or older than the generated grammar.
+local function gsx_stale(dir)
+  local so = vim.uv.fs_stat(dir .. "/parser/gsx.so")
+  if not so then
+    return true
+  end
+  local src = vim.uv.fs_stat(dir .. "/src/parser.c")
+  return src ~= nil and src.mtime.sec > so.mtime.sec
+end
+
 return {
   {
     "nvim-treesitter/nvim-treesitter",
@@ -111,6 +134,28 @@ return {
         zindex = 20,
         on_attach = nil,
       }
+    end,
+  },
+  {
+    "gsxhq/tree-sitter-gsx",
+    lazy = false,
+    build = function(plugin)
+      gsx_build(plugin.dir)
+    end, -- on install / :Lazy update
+    init = function()
+      vim.filetype.add { extension = { gsx = "gsx" } }
+    end,
+    config = function(plugin)
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = "gsx",
+        callback = function(ev)
+          if gsx_stale(plugin.dir) then
+            gsx_build(plugin.dir)
+          end -- safety net
+          pcall(vim.treesitter.start, ev.buf, "gsx")
+          vim.bo[ev.buf].commentstring = "// %s"
+        end,
+      })
     end,
   },
 }
