@@ -27,9 +27,20 @@ return {
         },
         -- NOTE: Needs gsx installed via: go install github.com/gsxhq/gsx/cmd/gsx@latest
         gsx_fmt = {
-          command = { "gsx" },
+          -- command = "gsx",
+          -- NOTE: Needs go-tui cli to be installed
+          command = "tui",
           args = { "fmt", "$FILENAME" },
+          cwd = function(_, ctx)
+            return vim.fs.root(ctx.filename, {
+              -- "gsx.toml",
+              "go.mod",
+              ".git",
+              -- "package.json",
+            })
+          end,
           stdin = false,
+          timeout_ms = 8000,
         },
         --   ktfmt = {
         --     args = { "-" },
