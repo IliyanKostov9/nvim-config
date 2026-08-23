@@ -1,3 +1,5 @@
+vim.cmd("language messages en_US.UTF-8")
+
 -- Set the path of netrw to always point to the current dir path
 -- conditionally if we're not looking at a library
 vim.api.nvim_create_autocmd("BufEnter", {
