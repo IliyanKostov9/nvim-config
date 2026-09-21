@@ -47,6 +47,7 @@ return {
         "nix",
         "tsx",
         "typescript",
+        "graphql",
 
         -- NOTE: IaC
         "hcl",
