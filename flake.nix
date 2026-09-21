@@ -36,12 +36,6 @@
         system,
         ...
       }: {
-        # NOTE: Unfree packages
-        # _module.args.pkgs = import inputs.nixpkgs {
-        #   inherit system;
-        #   config.allowUnfree = true;
-        # };
-
         devenv.shells.default = {
           name = "Nvim project";
 
@@ -53,6 +47,7 @@
             # luacheck.enable = true;
           };
 
+          cachix.pull = ["iliyankostov9-nvim-config"];
           devenv.root = let
             devenvRootFileContent = builtins.readFile devenv-root.outPath;
           in
