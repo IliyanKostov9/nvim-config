@@ -112,6 +112,22 @@ return {
         check_if_user_in_git(builtin.git_commits)
       end, { desc = "List all [G]it [C]o[M]mits" })
 
+      vim.keymap.set("n", "<leader>wa", function()
+        local funcs = require("settings.funcs")
+
+        local branch = vim.trim(vim.fn.system("git branch --show-current"))
+        if vim.tbl_contains({ "master", "main" }, branch) then
+          print("Cannot create a worktree on default branch!")
+          return
+        end
+
+        local git_project = funcs.get_git_root()
+        local project = "worktree-" .. vim.fn.fnamemodify(git_project, ":t") .. "-" .. string.gsub(branch, "/", "-")
+
+        vim.fn.system("git worktree add -b " .. branch .. " ../" .. project)
+        print("Worktree " .. project .. " is created!")
+      end, { desc = "[W]orktree [A]dd" })
+
       --  See `:help telescope.builtin.live_grep()` for information about particular keys
       vim.keymap.set("n", "<leader>s/", function()
         builtin.live_grep {
