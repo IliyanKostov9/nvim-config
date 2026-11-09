@@ -148,6 +148,29 @@ return {
         end)
       end, { desc = "[W]orktree [A]dd" })
 
+      vim.keymap.set("n", "<leader>wl", function()
+        local worktrees = vim.split(vim.fn.system { "git", "worktree", "list" }, "%s+")
+        local branches = vim.tbl_filter(function(branch)
+          return vim.startswith(branch, "[")
+        end, worktrees)
+
+        for index, branch in ipairs(branches) do
+          print(branch)
+          branches[index] = branch:sub(2, -2)
+        end
+
+        print(branches[1])
+      end, { desc = "[W]orktree [L]ist" })
+
+      vim.keymap.set("n", "<leader>wd", function()
+        local choice = vim.fn.input("Are you sure you want to delete the worktree")
+        if choice == "y" or choice == "Y" then
+          print("ok")
+        else
+          return
+        end
+      end, { desc = "[W]orktree [D]elete" })
+
       --  See `:help telescope.builtin.live_grep()` for information about particular keys
       vim.keymap.set("n", "<leader>s/", function()
         builtin.live_grep {
