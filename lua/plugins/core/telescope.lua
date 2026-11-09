@@ -113,19 +113,39 @@ return {
       end, { desc = "List all [G]it [C]o[M]mits" })
 
       vim.keymap.set("n", "<leader>wa", function()
-        local funcs = require("settings.funcs")
+        local root_path = require("settings.funcs").get_git_root()
+        local current_branch = vim.trim(vim.fn.system { "git", "branch", "--show-current" })
+        local branches = vim.fn.systemlist { "git", "branch", "--format=%(refname:short)" }
 
-        local branch = vim.trim(vim.fn.system("git branch --show-current"))
-        if vim.tbl_contains({ "master", "main" }, branch) then
-          print("Cannot create a worktree on default branch!")
-          return
-        end
+        vim.ui.select(branches, { prompt = "Select a branch to create worktree" }, function(branch)
+          if not branch then
+            return
+          elseif current_branch == branch then
+            vim.notify(
+              "Cannot create a worktree on the branch that's currently checked out: " .. current_branch .. " !"
+            )
+            return
+          end
+          local git_project = vim.fn.fnamemodify(root_path, ":t")
 
-        local git_project = funcs.get_git_root()
-        local project = "worktree-" .. vim.fn.fnamemodify(git_project, ":t") .. "-" .. string.gsub(branch, "/", "-")
+          local worktree_path = vim.fn.fnamemodify(root_path, ":h") .. "/worktree/" .. git_project .. "/"
+          local branch_worktree_path = worktree_path .. (string.gsub(branch, "/", "-"))
+          local current_branch_worktree_path = worktree_path .. (string.gsub(current_branch, "/", "-"))
 
-        vim.fn.system("git worktree add -b " .. branch .. " ../" .. project)
-        print("Worktree " .. project .. " is created!")
+          vim.fn.system { "mkdir", "-p", worktree_path }
+          vim.fn.system { "git", "worktree", "add", branch_worktree_path, branch }
+          vim.fn.system { "mv", root_path, current_branch_worktree_path }
+          vim.fn.system {
+            "git",
+            "-C",
+            current_branch_worktree_path,
+            "worktree",
+            "repair",
+            branch_worktree_path,
+          }
+
+          vim.notify("Worktree " .. worktree_path .. " is created!")
+        end)
       end, { desc = "[W]orktree [A]dd" })
 
       --  See `:help telescope.builtin.live_grep()` for information about particular keys
