@@ -150,16 +150,24 @@ return {
 
       vim.keymap.set("n", "<leader>wl", function()
         local worktrees = vim.split(vim.fn.system { "git", "worktree", "list" }, "%s+")
-        local branches = vim.tbl_filter(function(branch)
-          return vim.startswith(branch, "[")
-        end, worktrees)
+        local branches = {}
 
-        for index, branch in ipairs(branches) do
-          print(branch)
-          branches[index] = branch:sub(2, -2)
+        for index = 3, #worktrees, 3 do
+          table.insert(branches, { path = worktrees[index - 2], name = worktrees[index]:sub(2, -2) })
         end
 
-        print(branches[1])
+        local branch_names = vim
+          .iter(branches)
+          :map(function(entry)
+            return entry.name
+          end)
+          :totable()
+        vim.ui.select(branch_names, { prompt = "Select the branch to go to" }, function(branch)
+          local index, _ = vim.iter(branches):enumerate():find(function(_, e)
+            return e.name == branch
+          end)
+          vim.api.nvim_set_current_dir(branches[index].path)
+        end)
       end, { desc = "[W]orktree [L]ist" })
 
       vim.keymap.set("n", "<leader>wd", function()
