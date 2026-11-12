@@ -167,13 +167,19 @@ return {
             return e.name == branch
           end)
           vim.api.nvim_set_current_dir(branches[index].path)
+          vim.cmd.edit(vim.fn.fnameescape(branches[index].path))
         end)
       end, { desc = "[W]orktree [L]ist" })
 
       vim.keymap.set("n", "<leader>wd", function()
-        local choice = vim.fn.input("Are you sure you want to delete the worktree")
+        local path = vim.fn.getcwd()
+        local current_branch = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
+        vim.api.nvim_set_current_dir(path .. "/..")
+
+        local choice = vim.fn.input("Are you sure you want to delete the worktree " .. current_branch .. " ?\n(Y/N) ")
         if choice == "y" or choice == "Y" then
-          print("ok")
+          vim.fn.system { "git", "-C", current_branch, "worktree", "remove", current_branch }
+          vim.print("Worktree: " .. current_branch .. " deleted!")
         else
           return
         end
