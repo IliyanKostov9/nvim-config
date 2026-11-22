@@ -163,6 +163,10 @@ return {
           end)
           :totable()
         vim.ui.select(branch_names, { prompt = "Select the branch to go to" }, function(branch)
+          if not branch then
+            return
+          end
+
           local index, _ = vim.iter(branches):enumerate():find(function(_, e)
             return e.name == branch
           end)
